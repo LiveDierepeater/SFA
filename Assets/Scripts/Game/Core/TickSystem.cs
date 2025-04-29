@@ -18,7 +18,21 @@ public class TickSystem : MonoBehaviour
     public int ElapsedTicks { get; private set; }
     private float nextTick;
 
-    private void Awake() => TickManager.Instance.TickSystem = this;
+    private void Awake() => InitializeTickSystem();
+
+    private void InitializeTickSystem()
+    {
+        if (TickManager.Instance.TickSystem != null)
+        {
+            Debug.LogWarning("TickSystem already initialized.");
+            Destroy(gameObject);
+        }
+        else
+        {
+            TickManager.Instance.TickSystem = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     private void Update() => TickTimer();
 
