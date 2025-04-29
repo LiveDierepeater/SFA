@@ -1,0 +1,9 @@
+Proprietary License
+
+Copyright (c) 2024 Alan Rehme, Lucca Poensgen
+
+You are granted permission to view, download, and evaluate this software for the purposes of job recruitment only.
+
+You may not use, modify, distribute, or sell the source code or any part of it without prior written consent from the author.
+
+Any use or distribution of the software is strictly prohibited unless authorized by the author.
