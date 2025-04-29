@@ -72,8 +72,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Obsidian
-SFA_Vault/.obsidian/app.json
-SFA_Vault/.obsidian/appearance.json
-SFA_Vault/.obsidian/graph.json
-SFA_Vault/.obsidian/hotkeys.json
-SFA_Vault/.obsidian/workspace.json
+SFA_DevelopmentFiles/SFA_Vault/.obsidian/app.json
+SFA_DevelopmentFiles/SFA_Vault/.obsidian/appearance.json
+SFA_DevelopmentFiles/SFA_Vault/.obsidian/graph.json
+SFA_DevelopmentFiles/SFA_Vault/.obsidian/hotkeys.json
+SFA_DevelopmentFiles/SFA_Vault/.obsidian/workspace.json
