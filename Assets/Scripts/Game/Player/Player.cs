@@ -11,6 +11,7 @@ namespace Game.Player
         {
             // TODO: Is player able to transit to next level?
             transform.position = targetTransform.position;
+            transform.rotation = targetTransform.rotation;
         }
     }
 }
