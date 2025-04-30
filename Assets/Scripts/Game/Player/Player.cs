@@ -13,5 +13,8 @@ namespace Game.Player
             transform.position = targetTransform.position;
             transform.rotation = targetTransform.rotation;
         }
+
+        // TODO: Implement player driving state
+        public bool IsAbleToDrive() => true;
     }
 }
