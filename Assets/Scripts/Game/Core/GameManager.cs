@@ -15,6 +15,8 @@ namespace Game.Core
         private void Awake() => Initialize();
         private void Initialize()
         {
+            OnPlayerInitialize += SetPlayerRef;
+            
             if (Instance == null)
             {
                 Instance = this;
@@ -27,7 +29,6 @@ namespace Game.Core
             }
         }
 
-        private void Start() => OnPlayerInitialize += SetPlayerRef;
         private void SetPlayerRef(Player player) => Player = player ?? Player;
     }
 }
