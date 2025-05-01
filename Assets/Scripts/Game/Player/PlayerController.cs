@@ -26,13 +26,6 @@ namespace Game.Player
             m_GearActionReference.action.performed += HandleGearAction;
         }
 
-        private void HandleGearAction(InputAction.CallbackContext ctx)
-        {
-            if (!m_Player.IsAbleToDrive()) return;
-            
-            m_CarController.HandleGearInput(ctx.ReadValue<float>());
-        }
-
         private void HandlePrimaryAction(InputAction.CallbackContext ctx)
         {
             if (!Physics.Raycast(m_CameraTransform.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 9999.0f)) return;
@@ -46,6 +39,13 @@ namespace Game.Player
             if (!m_Player.IsAbleToDrive()) return;
             
             m_CarController.HandleGasInput(ctx.ReadValue<float>());
+        }
+
+        private void HandleGearAction(InputAction.CallbackContext ctx)
+        {
+            if (!m_Player.IsAbleToDrive()) return;
+            
+            m_CarController.HandleGearInput(ctx.ReadValue<float>());
         }
     }
 }
