@@ -23,7 +23,9 @@ namespace Game.Player
         {
             m_PrimaryActionReference.action.performed += HandlePrimaryAction;
             m_GasActionReference.action.performed += HandleGasAction;
+            m_GasActionReference.action.canceled += ReleaseGasAction;
             m_GearActionReference.action.performed += HandleGearAction;
+            m_GearActionReference.action.canceled += ReleaseGearAction;
         }
 
         private void HandlePrimaryAction(InputAction.CallbackContext ctx)
@@ -46,6 +48,20 @@ namespace Game.Player
             if (!m_Player.IsAbleToDrive()) return;
             
             m_CarController.HandleGearInput(ctx.ReadValue<float>());
+        }
+        
+        private void ReleaseGasAction(InputAction.CallbackContext ctx)
+        {
+            if (!m_Player.IsAbleToDrive() || Mathf.Abs(ctx.ReadValue<float>()) >= 0.2f) return;
+            
+            m_CarController.HandleGasInput(0);
+        }
+
+        private void ReleaseGearAction(InputAction.CallbackContext ctx)
+        {
+            if (!m_Player.IsAbleToDrive() || Mathf.Abs(ctx.ReadValue<float>()) >= 0.2f) return;
+            
+            m_CarController.HandleGearInput(0);
         }
     }
 }

@@ -3,8 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(WheelCollider))]
 public class Wheel : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private Transform m_WheelTransform;
-    [SerializeField] private bool m_IsLeftSidedWheel = true;
+    
+    [Header("Stats")]
+    [SerializeField] private bool m_Steer;
+    [SerializeField] private bool m_Power;
     
     private WheelCollider m_WheelCollider;
 
@@ -13,22 +17,15 @@ public class Wheel : MonoBehaviour
     public void ApplyTorque(float torque) => m_WheelCollider.motorTorque = torque;
     public void ApplySteerAngle(float angle) => m_WheelCollider.steerAngle = angle;
 
-    private void FixedUpdate()
-    {
-        Vector3 pos;
-        Quaternion rot;
+    private void FixedUpdate() => UpdateMeshTransform();
 
-        if (m_IsLeftSidedWheel)
-        {
-            m_WheelCollider.GetWorldPose(out pos, out rot);
-            m_WheelTransform.position = pos;
-            m_WheelTransform.rotation = rot;
-        }
-        else
-        {
-            m_WheelCollider.GetWorldPose(out pos, out rot);
-            m_WheelTransform.position = pos;
-            m_WheelTransform.rotation = rot * Quaternion.Euler(0, 180, 0);
-        }
+    private void UpdateMeshTransform()
+    {
+        m_WheelCollider.GetWorldPose(out var pos, out var rot);
+        m_WheelTransform.position = pos;
+        m_WheelTransform.rotation = rot;
     }
+
+    public bool IsSteeringWheel() => m_Steer;
+    public bool IsPoweredWheel() => m_Power;
 }
