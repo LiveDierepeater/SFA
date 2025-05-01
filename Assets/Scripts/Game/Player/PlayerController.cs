@@ -6,6 +6,7 @@ namespace Game.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Camera m_CameraTransform;
+        [Header("Input")]
         [SerializeField] private InputActionReference m_PrimaryActionReference;
         [SerializeField] private InputActionReference m_GasActionReference;
         [SerializeField] private InputActionReference m_GearActionReference;
@@ -13,9 +14,12 @@ namespace Game.Player
 
         private Player m_Player;
         
+        private float m_CurrentGasInput;
+        private float m_CurrentGearInput;
+        
         private void Awake()
         {
-            InitializeInput();
+            //InitializeInput();
             m_Player = GetComponent<Player>();
         }
 
@@ -23,9 +27,16 @@ namespace Game.Player
         {
             m_PrimaryActionReference.action.performed += HandlePrimaryAction;
             m_GasActionReference.action.performed += HandleGasAction;
-            m_GasActionReference.action.canceled += ReleaseGasAction;
             m_GearActionReference.action.performed += HandleGearAction;
-            m_GearActionReference.action.canceled += ReleaseGearAction;
+        }
+
+        private void FixedUpdate()
+        {
+            m_CurrentGasInput = m_GasActionReference.action.ReadValue<float>();
+            m_CurrentGearInput = m_GearActionReference.action.ReadValue<float>();
+            
+            HandleGasAction(m_CurrentGasInput);
+            HandleGearAction(m_CurrentGearInput);
         }
 
         private void HandlePrimaryAction(InputAction.CallbackContext ctx)
@@ -42,12 +53,21 @@ namespace Game.Player
             
             m_CarController.HandleGasInput(ctx.ReadValue<float>());
         }
+        private void HandleGasAction(float value)
+        {
+            if (!m_Player.IsAbleToDrive()) return;
+            m_CarController.HandleGasInput(value);
+        }
 
         private void HandleGearAction(InputAction.CallbackContext ctx)
         {
             if (!m_Player.IsAbleToDrive()) return;
-            
             m_CarController.HandleGearInput(ctx.ReadValue<float>());
+        }
+        private void HandleGearAction(float value)
+        {
+            if (!m_Player.IsAbleToDrive()) return;
+            m_CarController.HandleGearInput(value);
         }
         
         private void ReleaseGasAction(InputAction.CallbackContext ctx)
