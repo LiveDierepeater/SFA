@@ -2,7 +2,6 @@
 using Game.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Game.Core.LevelLogic
 {
@@ -76,39 +75,7 @@ namespace Game.Core.LevelLogic
             switch (m_SwitcherType)
             {
                 case SwitcherType.Level:
-                    if (m_RespawnVehicle)
-                    {
-                        Car car = GameManager.Instance.Player.GetComponent<PlayerController>().GetCarController().GetCar();
-                        if (car is not null)
-                        {
-                            car.transform.position = m_VehicleSpawnPoint.position;
-                            car.transform.rotation = m_VehicleSpawnPoint.rotation;
-
-                            if (m_NeutralizeVehicleVelocity)
-                            {
-                                car.GetRigidbody().linearVelocity = Vector3.zero;
-                                car.GetRigidbody().angularVelocity = Vector3.zero;
-                                
-                            }
-                        }
-                    }
-                    
-                    switch (m_CarControllerState)
-                    {
-                        case InputState.Disabled:
-                            GameManager.Instance.Player.GetComponent<PlayerController>().DisableCarInput();
-                            break;
-                        case InputState.Enabled:
-                            GameManager.Instance.Player.GetComponent<PlayerController>().EnableCarInput();
-                            break;
-                        
-                        case InputState.None:
-                            break;
-                        
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                    
+                    HandleVehicle();
                     m_NextLevel.SwitchToLevel();
                     break;
             
@@ -116,6 +83,52 @@ namespace Game.Core.LevelLogic
                     SceneManager.LoadScene(m_NextSceneName);
                     break;
             
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void HandleVehicle()
+        {
+            Car car = GameManager.Instance.Player.GetComponent<PlayerController>().GetCarController().GetCar();
+                    
+            if (m_RespawnVehicle)
+                HandleVehicleRespawning(car);
+                    
+            if (m_NeutralizeVehicleVelocity)
+                HandleVehicleVelocityNeutralization(car);
+
+            HandleVehicleInputState();
+        }
+        private void HandleVehicleRespawning(Car car)
+        {
+            if (car is null) return;
+            
+            car.transform.position = m_VehicleSpawnPoint.position;
+            car.transform.rotation = m_VehicleSpawnPoint.rotation;
+        }
+        private void HandleVehicleVelocityNeutralization(Car car)
+        {
+            if (car is null) return;
+            
+            car.GetRigidbody().linearVelocity = Vector3.zero;
+            car.GetRigidbody().angularVelocity = Vector3.zero;
+        }
+        private void HandleVehicleInputState()
+        {
+            switch (m_CarControllerState)
+            {
+                case InputState.Disabled:
+                    GameManager.Instance.Player.GetComponent<PlayerController>().DisableCarInput();
+                    break;
+                        
+                case InputState.Enabled:
+                    GameManager.Instance.Player.GetComponent<PlayerController>().EnableCarInput();
+                    break;
+                        
+                case InputState.None:
+                    break;
+                        
                 default:
                     throw new ArgumentOutOfRangeException();
             }
