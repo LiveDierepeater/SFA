@@ -29,9 +29,6 @@ namespace Game.Core.LevelLogic
         }
 
         // TODO: Implement camera fade through UI
-        public void CameraFade()
-        {
-        }
-
+        public void CameraFade() => UIManager.Instance.FadeToNextLevel_Coroutine();
     }
 }
