@@ -59,4 +59,6 @@ public class Car : MonoBehaviour
         foreach (var wheel in m_Wheels.Where(wheel => wheel.IsSteeringWheel()))
             wheel.ApplySteerAngle(value * m_MaxSteer);
     }
+    
+    public Rigidbody GetRigidbody() => m_Rigidbody;
 }

@@ -11,5 +11,7 @@ namespace Game.Player
 
         public void HandleGasInput(float value) => m_Car.HandleGasInput(value);
         public void HandleGearInput(float value) => m_Car.HandleGearInput(value);
+
+        public Car GetCar() => m_Car;
     }
 }

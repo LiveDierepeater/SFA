@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 876521173237095497}
   - component: {fileID: 5611571849743556918}
-  - component: {fileID: 637002232500343473}
+  - component: {fileID: 5848899141022717774}
   m_Layer: 0
-  m_Name: Junkyard_Door
+  m_Name: Junkyard_Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,27 +56,23 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &637002232500343473
-BoxCollider:
+--- !u!114 &5848899141022717774
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068070332959220956}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4, y: 1, z: 12}
-  m_Center: {x: 2.125, y: 0.5, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008f6d2832ffbac49881b28ef2fbdfb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Door_R: {fileID: 8524594482380209808}
+  m_Door_L: {fileID: 5256043045965504521}
+  m_OpenRotation_R: {x: 0, y: -90, z: 0}
+  m_OpenRotation_L: {x: 0, y: 90, z: 0}
+  m_Duration: 2
 --- !u!1 &2748457145207781163
 GameObject:
   m_ObjectHideFlags: 0

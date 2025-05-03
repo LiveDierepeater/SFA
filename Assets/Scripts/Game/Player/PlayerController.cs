@@ -13,24 +13,26 @@ namespace Game.Player
         [SerializeField] private CarController m_CarController;
 
         private Player m_Player;
-        
+
+        [SerializeField] private bool m_CarInputEnabled = true;
         private float m_CurrentGasInput;
         private float m_CurrentGearInput;
         
         private void Awake()
         {
-            //InitializeInput();
+            InitializeInput();
             m_Player = GetComponent<Player>();
         }
 
-        private void InitializeInput()
-        {
-            m_PrimaryActionReference.action.performed += HandlePrimaryAction;
-            m_GasActionReference.action.performed += HandleGasAction;
-            m_GearActionReference.action.performed += HandleGearAction;
-        }
+        private void InitializeInput() => m_PrimaryActionReference.action.performed += HandlePrimaryAction;
 
         private void FixedUpdate()
+        {
+            if (m_CarInputEnabled)
+                HandleCarInput();
+        }
+
+        private void HandleCarInput()
         {
             m_CurrentGasInput = m_GasActionReference.action.ReadValue<float>();
             m_CurrentGearInput = m_GearActionReference.action.ReadValue<float>();
@@ -83,5 +85,17 @@ namespace Game.Player
             
             m_CarController.HandleGearInput(0);
         }
+
+        public CarController GetCarController() => m_CarController;
+        
+        public void EnableCarInput() => m_CarInputEnabled = true;
+        public void DisableCarInput()
+        {
+            m_CarController.HandleGasInput(0);
+            m_CarController.HandleGearInput(0);
+            m_CarInputEnabled = false;
+        }
+
+        public bool IsCarInputEnabled() => m_CarInputEnabled;
     }
 }
