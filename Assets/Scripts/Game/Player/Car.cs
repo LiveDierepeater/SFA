@@ -30,34 +30,53 @@ public class Car : MonoBehaviour
 
     public void HandleGasInput(float value)
     {
-        float direction = Vector3.Dot(transform.forward, m_Rigidbody.linearVelocity.normalized);
-
         foreach (var wheel in m_Wheels)
         {
             // If the wheel is not powered, we don't want to apply torque to it
             if (!wheel.IsPoweredWheel()) continue;
             
-            // If the car is going too fast, we want to limit the speed
-            if (m_Rigidbody.linearVelocity.magnitude > m_MaxSpeed)
-                m_Rigidbody.linearVelocity = m_Rigidbody.linearVelocity.normalized * m_MaxSpeed;
-            
-            // If the car rolls forwards but the input is backwards, we want to simulate braking the car OR
-            // If the car rolls backwards but the input is forwards, we want to accelerate the car quicker
-            if (direction > 0 && value < 0 || direction < 0 && value > 0)
-            {
-                //wheel.ApplyTorque(value * m_Acceleration * m_MotorTorque);
-                wheel.ApplyTorque(value * m_MotorTorque);
-                float speedRatio = (Mathf.Abs(m_Rigidbody.linearVelocity.magnitude) / m_Rigidbody.maxLinearVelocity);
-                m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (-direction * (m_Acceleration * speedRatio)), ForceMode.Acceleration);
-            }
-            else
-                wheel.ApplyTorque(value * m_MotorTorque);
+            BreakingAndAcceleration(value, wheel);
+            LimitSpeed();
         }
     }
     public void HandleGearInput(float value)
     {
         foreach (var wheel in m_Wheels.Where(wheel => wheel.IsSteeringWheel()))
             wheel.ApplySteerAngle(value * m_MaxSteer);
+    }
+
+    /// <summary>
+    /// Handles the breaking and acceleration of the car
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="wheel"></param>
+    private void BreakingAndAcceleration(float value, Wheel wheel)
+    {
+        float direction = Vector3.Dot(transform.forward, m_Rigidbody.linearVelocity.normalized);
+        
+        // If the car rolls forwards but the input is backwards, we want to simulate braking the car OR
+        // If the car rolls backwards but the input is forwards, we want to accelerate the car quicker
+        if (direction > 0 && value < 0 || direction < 0 && value > 0)
+        {
+            //wheel.ApplyTorque(value * m_Acceleration * m_MotorTorque);
+            wheel.ApplyTorque(value * m_MotorTorque);
+            float speedRatio = (Mathf.Abs(m_Rigidbody.linearVelocity.magnitude) / m_Rigidbody.maxLinearVelocity);
+            m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (-direction * (m_Acceleration * speedRatio)), ForceMode.Acceleration);
+        }
+        else
+        {
+            wheel.ApplyTorque(value * m_MotorTorque);
+            m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (m_Acceleration * 0.2f * value), ForceMode.Acceleration);
+        }
+    }
+
+    /// <summary>
+    /// If the car is going too fast, we want to limit the speed
+    /// </summary>
+    private void LimitSpeed()
+    {
+        if (m_Rigidbody.linearVelocity.magnitude > m_MaxSpeed)
+            m_Rigidbody.linearVelocity = m_Rigidbody.linearVelocity.normalized * m_MaxSpeed;
     }
     
     public Rigidbody GetRigidbody() => m_Rigidbody;
