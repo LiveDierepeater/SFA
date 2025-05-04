@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
+
+public enum ShowDebug
+{
+    Hide,
+    Show
+}
 
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour
@@ -19,6 +26,13 @@ public class Car : MonoBehaviour
     
     private Rigidbody m_Rigidbody;
     
+    // DEBUG
+    [Header("Debug")] public ShowDebug DebugMode;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MaxSpeed;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MotorTorque;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_Acceleration;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MaxSteer;
+    
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -29,6 +43,8 @@ public class Car : MonoBehaviour
         m_CarStats.InitializeStats();
         m_Rigidbody.maxLinearVelocity = m_CarStats.GetMaxSpeed();
     }
+
+    private void Update() => UpdateDebugValues();
 
     public void HandleGasInput(float value)
     {
@@ -82,4 +98,12 @@ public class Car : MonoBehaviour
     }
     
     public Rigidbody GetRigidbody() => m_Rigidbody;
+    
+    private void UpdateDebugValues()
+    {
+        DEBUG_MaxSpeed = m_CarStats.GetMaxSpeed();
+        DEBUG_MotorTorque = m_CarStats.GetMotorTorque();
+        DEBUG_Acceleration = m_CarStats.GetAcceleration();
+        DEBUG_MaxSteer = m_CarStats.GetMaxSteer();
+    }
 }

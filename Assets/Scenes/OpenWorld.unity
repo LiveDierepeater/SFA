@@ -254,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetTransform: {fileID: 1324800911}
   m_resetTransform: {fileID: 1001825012}
+  LoadingDuration: 1
 --- !u!4 &322711844
 Transform:
   m_ObjectHideFlags: 0
@@ -478,6 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetTransform: {fileID: 2142161280}
   m_resetTransform: {fileID: 1001825012}
+  LoadingDuration: 1
 --- !u!1 &521110774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetTransform: {fileID: 1226317535}
   m_resetTransform: {fileID: 1001825012}
+  LoadingDuration: 1
 --- !u!4 &980221851
 Transform:
   m_ObjectHideFlags: 0
@@ -1390,6 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetTransform: {fileID: 851121985}
   m_resetTransform: {fileID: 1001825012}
+  LoadingDuration: 1
 --- !u!4 &983393324
 Transform:
   m_ObjectHideFlags: 0
@@ -3031,6 +3035,14 @@ PrefabInstance:
     - target: {fileID: 738138060238623622, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520519620647190973, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
+      propertyPath: Debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520519620647190973, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
+      propertyPath: DebugMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9050553515825463359, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
       propertyPath: m_Name

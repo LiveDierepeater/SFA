@@ -10,8 +10,8 @@ public class SOBaseStats : ScriptableObject
     public SOBonnet m_Bonnet;
     public SOChassis m_Chassis;
     
-    public float m_MaxSpeed = 12f;
-    public float m_MotorTorque = 500f;
-    public float m_Acceleration = 10f;
+    public float m_MaxSpeed = 4f;
+    public float m_MotorTorque = 250f;
+    public float m_Acceleration = 4f;
     public float m_MaxSteer = 20f;
 }

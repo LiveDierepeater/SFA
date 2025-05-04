@@ -18,7 +18,7 @@ MonoBehaviour:
   m_Trunk: {fileID: 11400000, guid: 46acd516ed1a04740897085bdcb5bafd, type: 2}
   m_Bonnet: {fileID: 11400000, guid: d066a2299cadfae44873ac6e5a10b31b, type: 2}
   m_Chassis: {fileID: 11400000, guid: 01466b10c083a8341a40c81f54ea9412, type: 2}
-  m_MaxSpeed: 12
-  m_MotorTorque: 500
-  m_Acceleration: 10
+  m_MaxSpeed: 4
+  m_MotorTorque: 250
+  m_Acceleration: 4
   m_MaxSteer: 20
