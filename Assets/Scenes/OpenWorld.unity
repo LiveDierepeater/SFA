@@ -593,8 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05cec51c869c57c409f345e4e98f1f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Fader: {fileID: 656432586}
-  m_FadeTime: 0.5
+  m_Fader: {fileID: 656432588}
 --- !u!1 &549748504
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +714,7 @@ GameObject:
   - component: {fileID: 656432585}
   - component: {fileID: 656432587}
   - component: {fileID: 656432586}
+  - component: {fileID: 656432588}
   m_Layer: 5
   m_Name: Fader
   m_TagString: Untagged
@@ -779,6 +779,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656432584}
   m_CullTransparentMesh: 1
+--- !u!95 &656432588
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656432584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e549d04a59c8d8c4d9d892934977ea54, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &727324498
 GameObject:
   m_ObjectHideFlags: 0
