@@ -10,11 +10,12 @@ public class Car : MonoBehaviour
     
     private List<Wheel> m_Wheels;
     
-    [Header("Stats")]
-    [SerializeField] [Range(1, 30)] private float m_MaxSpeed = 12f;
-    [SerializeField] private float m_MotorTorque = 500f;
-    [SerializeField] [Range(1, 100)] private float m_Acceleration = 10f;
-    [SerializeField] [Range(0, 60)] private float m_MaxSteer = 20f;
+    //[Header("Stats")]
+    //[SerializeField] [Range(1, 30)] private float m_MaxSpeed = 12f;
+    //[SerializeField] private float m_MotorTorque = 500f;
+    //[SerializeField] [Range(1, 100)] private float m_Acceleration = 10f;
+    //[SerializeField] [Range(0, 60)] private float m_MaxSteer = 20f;
+    [SerializeField] private CarStats m_CarStats;
     
     private Rigidbody m_Rigidbody;
     
@@ -25,7 +26,8 @@ public class Car : MonoBehaviour
         
         m_Wheels = GetComponentsInChildren<Wheel>().ToList();
         
-        m_Rigidbody.maxLinearVelocity = m_MaxSpeed;
+        m_CarStats.InitializeStats();
+        m_Rigidbody.maxLinearVelocity = m_CarStats.GetMaxSpeed();
     }
 
     public void HandleGasInput(float value)
@@ -42,7 +44,7 @@ public class Car : MonoBehaviour
     public void HandleGearInput(float value)
     {
         foreach (var wheel in m_Wheels.Where(wheel => wheel.IsSteeringWheel()))
-            wheel.ApplySteerAngle(value * m_MaxSteer);
+            wheel.ApplySteerAngle(value * m_CarStats.GetMaxSteer());
     }
 
     /// <summary>
@@ -59,14 +61,14 @@ public class Car : MonoBehaviour
         if (direction > 0 && value < 0 || direction < 0 && value > 0)
         {
             //wheel.ApplyTorque(value * m_Acceleration * m_MotorTorque);
-            wheel.ApplyTorque(value * m_MotorTorque);
+            wheel.ApplyTorque(value * m_CarStats.GetMotorTorque());
             float speedRatio = (Mathf.Abs(m_Rigidbody.linearVelocity.magnitude) / m_Rigidbody.maxLinearVelocity);
-            m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (-direction * (m_Acceleration * speedRatio)), ForceMode.Acceleration);
+            m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (-direction * (m_CarStats.GetAcceleration() * speedRatio)), ForceMode.Acceleration);
         }
         else
         {
-            wheel.ApplyTorque(value * m_MotorTorque);
-            m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (m_Acceleration * 0.2f * value), ForceMode.Acceleration);
+            wheel.ApplyTorque(value * m_CarStats.GetMotorTorque());
+            m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (m_CarStats.GetAcceleration() * 0.2f * value), ForceMode.Acceleration);
         }
     }
 
@@ -75,8 +77,8 @@ public class Car : MonoBehaviour
     /// </summary>
     private void LimitSpeed()
     {
-        if (m_Rigidbody.linearVelocity.magnitude > m_MaxSpeed)
-            m_Rigidbody.linearVelocity = m_Rigidbody.linearVelocity.normalized * m_MaxSpeed;
+        if (m_Rigidbody.linearVelocity.magnitude > m_CarStats.GetMaxSpeed())
+            m_Rigidbody.linearVelocity = m_Rigidbody.linearVelocity.normalized * m_CarStats.GetMaxSpeed();
     }
     
     public Rigidbody GetRigidbody() => m_Rigidbody;

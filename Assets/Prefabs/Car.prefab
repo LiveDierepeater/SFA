@@ -468,6 +468,8 @@ MonoBehaviour:
   m_MotorTorque: 600
   m_Acceleration: 10
   m_MaxSteer: 20
+  m_CarStats:
+    m_BaseStats: {fileID: 11400000, guid: 110047661e6d41543b912fe8beeee281, type: 2}
 --- !u!114 &449349853022679247
 MonoBehaviour:
   m_ObjectHideFlags: 0
