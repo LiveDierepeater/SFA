@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public enum ShowDebug
 {
@@ -14,24 +13,38 @@ public class Car : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Transform m_CenterOfMass;
-    
-    private List<Wheel> m_Wheels;
-    
-    //[Header("Stats")]
-    //[SerializeField] [Range(1, 30)] private float m_MaxSpeed = 12f;
-    //[SerializeField] private float m_MotorTorque = 500f;
-    //[SerializeField] [Range(1, 100)] private float m_Acceleration = 10f;
-    //[SerializeField] [Range(0, 60)] private float m_MaxSteer = 20f;
     [SerializeField] private CarStats m_CarStats;
     
+    private List<Wheel> m_Wheels;
     private Rigidbody m_Rigidbody;
-    
-    // DEBUG
+
+#region Debug
+
     [Header("Debug")] public ShowDebug DebugMode;
     [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MaxSpeed;
     [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MotorTorque;
     [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_Acceleration;
     [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MaxSteer;
+    [Space(10)]
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentConsumption;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentAcceleration;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentSpeed;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentTraction;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentFuelTankVolume;
+    [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentMass;
+
+#endregion
+    
+    // more mass -> more consumption
+    // more aerodynamics -> less consumption
+    // more weight -> less acceleration
+    // more aerodynamics -> more acceleration
+    
+    // a consumption of 1 is enough to cross 1 map tile
+    // affected value = base value + adaption value * affection scale
+    
+    // aerodynamic has a lot of influence on the car
+    // racing tires have more sideways friction
     
     private void Awake()
     {
@@ -77,13 +90,13 @@ public class Car : MonoBehaviour
         if (direction > 0 && value < 0 || direction < 0 && value > 0)
         {
             //wheel.ApplyTorque(value * m_Acceleration * m_MotorTorque);
-            wheel.ApplyTorque(value * m_CarStats.GetMotorTorque());
+            wheel.ApplyTorque(value * m_CarStats.GetTorque());
             float speedRatio = (Mathf.Abs(m_Rigidbody.linearVelocity.magnitude) / m_Rigidbody.maxLinearVelocity);
             m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (-direction * (m_CarStats.GetAcceleration() * speedRatio)), ForceMode.Acceleration);
         }
         else
         {
-            wheel.ApplyTorque(value * m_CarStats.GetMotorTorque());
+            wheel.ApplyTorque(value * m_CarStats.GetTorque());
             m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (m_CarStats.GetAcceleration() * 0.2f * value), ForceMode.Acceleration);
         }
     }
@@ -102,8 +115,32 @@ public class Car : MonoBehaviour
     private void UpdateDebugValues()
     {
         DEBUG_MaxSpeed = m_CarStats.GetMaxSpeed();
-        DEBUG_MotorTorque = m_CarStats.GetMotorTorque();
+        DEBUG_MotorTorque = m_CarStats.GetTorque();
         DEBUG_Acceleration = m_CarStats.GetAcceleration();
         DEBUG_MaxSteer = m_CarStats.GetMaxSteer();
+
+        DEBUG_CurrentConsumption =
+            m_CarStats.GetEngine().m_Consumption
+            * (1f + m_CarStats.GetMass() / 6f * m_CarStats.GetBaseStats().m_BaseMass)
+            * (1f - m_CarStats.GetAerodynamics() / 12f);
+        
+        DEBUG_CurrentAcceleration =
+            m_CarStats.GetTorque()
+            * (1f + m_CarStats.GetAerodynamics() / 1.2f)
+            / m_CarStats.GetMass();
+
+        DEBUG_CurrentSpeed =
+            m_CarStats.GetTorque() / m_CarStats.GetMass()
+            * (1f + m_CarStats.GetAerodynamics() / 1.2f);
+
+        DEBUG_CurrentTraction =
+            m_CarStats.GetTires().m_Traction
+            + m_CarStats.GetMass() / 6f * m_CarStats.GetBaseStats().m_BaseMass;
+        
+        DEBUG_CurrentFuelTankVolume =
+            m_CarStats.GetFuelTank().m_Volume
+            + m_CarStats.GetMass() / 6f * m_CarStats.GetBaseStats().m_BaseMass;
+        
+        DEBUG_CurrentMass = m_CarStats.GetMass();
     }
 }

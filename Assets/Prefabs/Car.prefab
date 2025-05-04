@@ -464,12 +464,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CenterOfMass: {fileID: 5671183008578764112}
-  m_MaxSpeed: 30
-  m_MotorTorque: 600
-  m_Acceleration: 10
-  m_MaxSteer: 20
   m_CarStats:
     m_BaseStats: {fileID: 11400000, guid: 110047661e6d41543b912fe8beeee281, type: 2}
+  DebugMode: 1
+  DEBUG_MaxSpeed: 0
+  DEBUG_MotorTorque: 0
+  DEBUG_Acceleration: 0
+  DEBUG_MaxSteer: 0
 --- !u!114 &449349853022679247
 MonoBehaviour:
   m_ObjectHideFlags: 0

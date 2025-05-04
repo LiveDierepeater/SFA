@@ -14,4 +14,5 @@ public class SOBaseStats : ScriptableObject
     public float m_MotorTorque = 250f;
     public float m_Acceleration = 4f;
     public float m_MaxSteer = 20f;
+    public float m_BaseMass = 50f;
 }

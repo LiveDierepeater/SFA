@@ -3036,14 +3036,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2520519620647190973, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
-      propertyPath: Debug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2520519620647190973, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
-      propertyPath: DebugMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9050553515825463359, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
       propertyPath: m_Name
       value: Car
