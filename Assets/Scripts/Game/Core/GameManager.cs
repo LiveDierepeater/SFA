@@ -24,7 +24,7 @@ namespace Game.Core
             }
             else
             {
-                Debug.LogWarning("TickSystem already initialized.");
+                Debug.LogWarning("TickSystem already initialized!");
                 Destroy(gameObject);
             }
         }

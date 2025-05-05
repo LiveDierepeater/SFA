@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Game.Core;
 using UnityEngine;
@@ -24,7 +23,7 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
     {
         if (GameManager.Instance.m_Player.GetComponent<Inventory>().IsComponentInInventory(m_CarComponent))
         {
-            Debug.Log("Component already in inventory.");
+            Debug.LogWarning($"Component {m_CarComponent} already in inventory!");
             Destroy(gameObject);
         }
         else
