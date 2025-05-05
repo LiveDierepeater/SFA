@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Game.Vehicle.Stats;
 using UnityEngine;
 
 namespace Game.Vehicle
