@@ -42,7 +42,7 @@ namespace Game.Core.LevelLogic
 
         public void PlayerTransition(Transform targetPlayerTransform)
         {
-            GameManager.Instance.Player.LevelTransition(targetPlayerTransform);
+            GameManager.Instance.m_Player.LevelTransition(targetPlayerTransform);
             OnLevelSwitchingFinished?.Invoke();
         }
 

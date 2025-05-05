@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Diesel
   m_EditorClassIdentifier: 
   m_Mass: 2
+  m_Prefab: {fileID: 5398818388921346304, guid: d1c15c0ffbea4334ca8ac0aa08bb3e77, type: 3}
   m_Speed: 2
   m_Consumption: 1
   m_Torque: 3

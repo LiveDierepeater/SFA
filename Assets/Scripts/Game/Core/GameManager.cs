@@ -7,7 +7,7 @@ namespace Game.Core
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        public Player Player;
+        public Player m_Player;
         
         public delegate void PlayerCommunication(Player player);
         public PlayerCommunication OnPlayerInitialize;
@@ -29,6 +29,6 @@ namespace Game.Core
             }
         }
 
-        private void SetPlayerRef(Player player) => Player = player ?? Player;
+        private void SetPlayerRef(Player player) => m_Player = player ? player : m_Player;
     }
 }

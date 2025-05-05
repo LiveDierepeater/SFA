@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game.Player
 {
+    [RequireComponent(typeof(Inventory))]
     public class Player : MonoBehaviour
     {
         private void Start() => GameManager.Instance.OnPlayerInitialize(this);

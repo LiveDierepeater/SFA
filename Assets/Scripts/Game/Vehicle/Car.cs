@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Vehicle.Stats;
@@ -55,7 +56,10 @@ namespace Game.Vehicle
             m_Rigidbody.centerOfMass = m_CenterOfMass.localPosition;
         
             m_Wheels = GetComponentsInChildren<Wheel>().ToList();
-        
+        }
+
+        private void Start()
+        {
             m_CarStats.InitializeStats();
             m_Rigidbody.maxLinearVelocity = m_CarStats.GetMaxSpeed();
         }

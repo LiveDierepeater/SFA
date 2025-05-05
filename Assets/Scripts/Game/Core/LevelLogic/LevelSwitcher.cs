@@ -91,7 +91,7 @@ namespace Game.Core.LevelLogic
 
         private void HandleVehicle()
         {
-            Car car = GameManager.Instance.Player.GetComponent<PlayerController>().GetCarController().GetCar();
+            Car car = GameManager.Instance.m_Player.GetComponent<PlayerController>().GetCarController().GetCar();
                     
             if (m_RespawnVehicle)
                 HandleVehicleRespawning(car);
@@ -120,11 +120,11 @@ namespace Game.Core.LevelLogic
             switch (m_CarControllerState)
             {
                 case InputState.Disabled:
-                    GameManager.Instance.Player.GetComponent<PlayerController>().DisableCarInput();
+                    GameManager.Instance.m_Player.GetComponent<PlayerController>().DisableCarInput();
                     break;
                         
                 case InputState.Enabled:
-                    GameManager.Instance.Player.GetComponent<PlayerController>().EnableCarInput();
+                    GameManager.Instance.m_Player.GetComponent<PlayerController>().EnableCarInput();
                     break;
                         
                 case InputState.None:
