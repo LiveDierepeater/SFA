@@ -1,5 +1,6 @@
 ﻿using System;
 using Game.Player;
+using Game.Vehicle;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

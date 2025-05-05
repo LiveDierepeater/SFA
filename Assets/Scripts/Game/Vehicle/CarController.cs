@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Player
+namespace Game.Vehicle
 {
     [RequireComponent(typeof(Car))]
     public class CarController : MonoBehaviour
