@@ -1484,6 +1484,8 @@ MonoBehaviour:
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
   m_CarControllerState: 0
+  m_UIHandling: 0
+  m_UIToProcess: 
 --- !u!114 &8270170484232445100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,6 +1500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetTransform: {fileID: 2003065615900410745}
   m_resetTransform: {fileID: 738724001826235544}
+  LoadingDuration: 1
 --- !u!1 &636574267378928563
 GameObject:
   m_ObjectHideFlags: 0
@@ -4133,6 +4136,8 @@ MonoBehaviour:
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
   m_CarControllerState: 0
+  m_UIHandling: 0
+  m_UIToProcess: 
 --- !u!1 &2460029324428361948
 GameObject:
   m_ObjectHideFlags: 0
@@ -7274,6 +7279,8 @@ MonoBehaviour:
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
   m_CarControllerState: 0
+  m_UIHandling: 0
+  m_UIToProcess: 
 --- !u!1 &4291910234380436010
 GameObject:
   m_ObjectHideFlags: 0
@@ -8658,6 +8665,8 @@ MonoBehaviour:
   m_RespawnVehicle: 1
   m_NeutralizeVehicleVelocity: 1
   m_CarControllerState: 2
+  m_UIHandling: 2
+  m_UIToProcess: 01000000
 --- !u!1 &5077847661451733913
 GameObject:
   m_ObjectHideFlags: 0
@@ -11205,6 +11214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetTransform: {fileID: 738724001826235544}
   m_resetTransform: {fileID: 0}
+  LoadingDuration: 1
+  m_VehicleSpawnPoint: {fileID: 0}
 --- !u!1 &6228946648574959039
 GameObject:
   m_ObjectHideFlags: 0
@@ -14880,6 +14891,8 @@ MonoBehaviour:
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
   m_CarControllerState: 0
+  m_UIHandling: 0
+  m_UIToProcess: 
 --- !u!114 &1370403345055921664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14894,6 +14907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetTransform: {fileID: 1592383939012025524}
   m_resetTransform: {fileID: 738724001826235544}
+  LoadingDuration: 1
 --- !u!1 &8624372832463109138
 GameObject:
   m_ObjectHideFlags: 0

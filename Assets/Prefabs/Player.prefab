@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 4155439071779245952}
   - component: {fileID: -3126814414619693420}
   - component: {fileID: 8001493483672173011}
+  - component: {fileID: 8510967581152644189}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -200,3 +201,17 @@ MonoBehaviour:
   m_GasActionReference: {fileID: 7369812530962820603, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_GearActionReference: {fileID: -100700664745409970, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_CarController: {fileID: 0}
+  m_CarInputEnabled: 0
+--- !u!114 &8510967581152644189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359980695859827795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5aba837799d0f43aa82839033c822b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CarComponents: []

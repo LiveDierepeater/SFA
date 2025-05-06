@@ -6,8 +6,8 @@ namespace Game.Core.LevelLogic
 {
     public abstract class Level : MonoBehaviour, ILevel
     {
-        [SerializeField] private Transform m_targetTransform;
-        [SerializeField] private Transform m_resetTransform;
+        [SerializeField] protected Transform m_targetTransform;
+        [SerializeField] protected Transform m_resetTransform;
         
         [SerializeField] private float LoadingDuration = 1f;
 
@@ -23,7 +23,7 @@ namespace Game.Core.LevelLogic
 
         public virtual void ResetToLevel() => PlayerTransition(m_resetTransform);
 
-        public virtual void BeforeLevelLoad()
+        protected virtual void BeforeLevelLoad()
         {
             OnLevelSwitchingAccepted?.Invoke();
             CameraFade(true);

@@ -555,6 +555,8 @@ MonoBehaviour:
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
   m_CarControllerState: 1
+  m_UIHandling: 1
+  m_UIToProcess: 01000000
 --- !u!65 &3945369936038168122
 BoxCollider:
   m_ObjectHideFlags: 0

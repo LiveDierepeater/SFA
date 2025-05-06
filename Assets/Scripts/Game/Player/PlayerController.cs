@@ -15,7 +15,7 @@ namespace Game.Player
 
         private Player m_Player;
 
-        [SerializeField] private bool m_CarInputEnabled = true;
+        [SerializeField] private bool m_CarInputEnabled;
         private float m_CurrentGasInput;
         private float m_CurrentGearInput;
         
