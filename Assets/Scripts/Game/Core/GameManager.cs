@@ -4,6 +4,7 @@ namespace Game.Core
 {
     using Player;
     
+    [DefaultExecutionOrder(-1)]
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;

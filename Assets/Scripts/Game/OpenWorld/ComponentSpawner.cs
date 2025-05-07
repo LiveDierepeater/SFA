@@ -9,9 +9,10 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
     [SerializeField] private float m_InteractionSphereRadius = 2f;
     [SerializeField] private float m_SpawnDelay = 1.0f;
     [Header("Spawning")]
+    [SerializeField] private GameObject m_CarComponentProxyPrefab;
     [SerializeField] private CarComponent m_CarComponent;
 
-    private Transform m_SpawnedCarComponent;
+    private CarComponentProxy m_SpawnedCarComponent;
 
     private IEnumerator Start()
     {
@@ -28,7 +29,8 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
         }
         else
         {
-            m_SpawnedCarComponent = Instantiate(m_CarComponent.m_Prefab, transform.position, Quaternion.identity, transform).transform;
+            m_SpawnedCarComponent = Instantiate(m_CarComponentProxyPrefab, transform.position, Quaternion.identity, transform).GetComponent<CarComponentProxy>();
+            m_SpawnedCarComponent.InitializeCarComponentProxy(m_CarComponent, null, true, true);
             GetComponent<SphereCollider>().radius = m_InteractionSphereRadius;
         }
     }
@@ -46,7 +48,7 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
         if (m_SpawnedCarComponent != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, m_SpawnedCarComponent.position);
+            Gizmos.DrawLine(transform.position, m_SpawnedCarComponent.transform.position);
         }
     }
 }

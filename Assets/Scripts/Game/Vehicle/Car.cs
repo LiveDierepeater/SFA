@@ -118,6 +118,7 @@ namespace Game.Vehicle
         }
     
         public Rigidbody GetRigidbody() => m_Rigidbody;
+        public CarStats GetCarStats() => m_CarStats;
     
         private void UpdateDebugValues()
         {

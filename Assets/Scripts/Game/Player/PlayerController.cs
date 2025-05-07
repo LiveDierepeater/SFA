@@ -1,4 +1,5 @@
 using Game.Vehicle;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,10 @@ namespace Game.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        public delegate void PlayerControllerEvents();
+        public PlayerControllerEvents OnPrimaryActionHold;
+        public PlayerControllerEvents OnPrimaryActionReleased;
+        
         [SerializeField] private Camera m_CameraTransform;
         [Header("Input")]
         [SerializeField] private InputActionReference m_PrimaryActionReference;
@@ -25,12 +30,22 @@ namespace Game.Player
             m_Player = GetComponent<Player>();
         }
 
-        private void InitializeInput() => m_PrimaryActionReference.action.performed += HandlePrimaryAction;
+        private void InitializeInput()
+        {
+            m_PrimaryActionReference.action.performed += HandlePrimaryAction;
+            m_PrimaryActionReference.action.canceled += HandlePrimaryActionReleased;
+        }
 
         private void FixedUpdate()
         {
             if (m_CarInputEnabled)
                 HandleCarInput();
+        }
+
+        private void Update()
+        {
+            if (m_PrimaryActionReference.action.IsPressed() && !m_PrimaryActionReference.action.WasPerformedThisFrame())
+                OnPrimaryActionHold?.Invoke();
         }
 
         private void HandleCarInput()
@@ -45,10 +60,17 @@ namespace Game.Player
         private void HandlePrimaryAction(InputAction.CallbackContext ctx)
         {
             if (!Physics.Raycast(m_CameraTransform.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 9999.0f)) return;
-            if (!hit.transform.TryGetComponent(out IInteractable interactable)) return;
+            hit.transform.TryGetComponent(out IInteractable interactable);
             
-            interactable.OnInteract();
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("InvisWall"))
+            {
+                if (!Physics.Raycast(hit.point + hit.normal, hit.normal, out RaycastHit secondHit, 999.0f)) return;
+                secondHit.transform.TryGetComponent(out interactable);
+            }
+
+            interactable?.OnInteract();
         }
+        private void HandlePrimaryActionReleased(InputAction.CallbackContext ctx) => OnPrimaryActionReleased?.Invoke();
 
         private void HandleGasAction(InputAction.CallbackContext ctx)
         {
