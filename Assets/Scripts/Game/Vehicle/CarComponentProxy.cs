@@ -20,7 +20,7 @@ public class CarComponentProxy : MonoBehaviour, IInteractable
     private CarProxy m_CarProxy;
     private Vector3 m_SpawnPoint;
     
-    public void InitializeCarComponentProxy(CarComponent carComponent, CarProxy carProxy = null, bool removeRigidbody = false, bool isKinematic = false, ProxyState proxyState = ProxyState.Free)
+    public void InitializeCarComponentProxy(CarComponent carComponent, CarProxy carProxy = null, bool removeRigidbody = false, bool isKinematic = false, ProxyState proxyState = ProxyState.Free, Vector3 spawnPoint = default(Vector3))
     {
         if (!carComponent)
             throw new Exception("CarComponent is null!");
@@ -30,10 +30,10 @@ public class CarComponentProxy : MonoBehaviour, IInteractable
         newProxy.layer = LayerMask.NameToLayer("Components");
         var _collider = newProxy.AddComponent<MeshCollider>();
         _collider.convex = true;
-
-        m_CarProxy = carProxy;
-        m_SpawnPoint = transform.position;
         
+        m_CarProxy = carProxy;
+        m_SpawnPoint = spawnPoint == default(Vector3) ? transform.position : spawnPoint;
+
         TryGetComponent(out Rigidbody _rigidbody);
         _rigidbody.isKinematic = isKinematic;
         

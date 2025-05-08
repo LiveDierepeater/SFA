@@ -15,6 +15,7 @@ public class CarProxy : MonoBehaviour, IInteractable
     [SerializeField] private Transform m_Slot_Wheel_RB;
     
     [SerializeField] private GameObject m_CarComponentProxyPrefab;
+    [SerializeField] private Transform m_SpawnPointTransform;
 
     public void UpdateCarProxy()
     {
@@ -26,43 +27,35 @@ public class CarProxy : MonoBehaviour, IInteractable
         
         tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Chassis.position, Quaternion.identity, m_Slot_Chassis).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetChassis(),
-            this, false, true, ProxyState.Installed);
-        tmp.m_ProxyState = ProxyState.Installed;
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
         
         tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Engine.position, Quaternion.identity, m_Slot_Engine).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetEngine(),
-            this, false, true, ProxyState.Installed);
-        tmp.m_ProxyState = ProxyState.Installed;
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
         
         tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_FuelTank.position, Quaternion.identity, m_Slot_FuelTank).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetFuelTank(),
-            this, false, true, ProxyState.Installed);
-        tmp.m_ProxyState = ProxyState.Installed;
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
         
         tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Trunk.position, Quaternion.identity, m_Slot_Trunk).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTrunk(),
-            this, false, true, ProxyState.Installed);
-        tmp.m_ProxyState = ProxyState.Installed;
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
         
         tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_LF.position, Quaternion.identity, m_Slot_Wheel_LF).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
-            this, false, true, ProxyState.Installed);
-        tmp.m_ProxyState = ProxyState.Installed;
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
         
         tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_RF.position, Quaternion.identity, m_Slot_Wheel_RF).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
-            this, false, true, ProxyState.Installed);
-        tmp.m_ProxyState = ProxyState.Installed;
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
         
         tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_LB.position, Quaternion.identity, m_Slot_Wheel_LB).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
-            this, false, true, ProxyState.Installed);
-        tmp.m_ProxyState = ProxyState.Installed;
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
         
         tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_RB.position, Quaternion.identity, m_Slot_Wheel_RB).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
-            this, false, true, ProxyState.Installed);
-        tmp.m_ProxyState = ProxyState.Installed;
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
     }
     
     public void RemoveProxy(CarComponentProxy carComponentProxy)
@@ -155,9 +148,18 @@ public class CarProxy : MonoBehaviour, IInteractable
                 break;
             case Tires:
                 carComponentProxy.transform.SetParent(m_Slot_Wheel_LF.transform);
-                Instantiate(carComponentProxy, m_Slot_Wheel_RF.transform, true);
-                Instantiate(carComponentProxy, m_Slot_Wheel_LB.transform, true);
-                Instantiate(carComponentProxy, m_Slot_Wheel_RB.transform, true);
+                var tmp = Instantiate(carComponentProxy, m_Slot_Wheel_RF.transform, false);
+                tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(
+                    GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
+                    this, false, true, ProxyState.Installed, tmp.transform.position);
+                tmp = Instantiate(carComponentProxy, m_Slot_Wheel_LB.transform, false);
+                tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(
+                    GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
+                    this, false, true, ProxyState.Installed, tmp.transform.position);
+                tmp = Instantiate(carComponentProxy, m_Slot_Wheel_RB.transform, false);
+                tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(
+                    GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
+                    this, false, true, ProxyState.Installed, tmp.transform.position);
                 break;
             case Trunk:
                 carComponentProxy.transform.SetParent(m_Slot_Trunk.transform);
