@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Game.Player;
 using UnityEngine;
 
@@ -16,14 +17,15 @@ namespace Game.Core.LevelLogic
         protected override void BeforeLevelLoad()
         {
             base.BeforeLevelLoad();
-            m_CarProxy.UpdateCarProxy();
             DestroyAllCarComponents();
+            m_CarProxy.UpdateCarProxy();
             SpawnCarComponents();
         }
         
         private void DestroyAllCarComponents()
         {
-            foreach (var component in m_SpawnedCarComponents) Destroy(component.gameObject);
+            foreach (var component in m_SpawnedCarComponents.Where(component => component != null))
+                Destroy(component.gameObject);
             m_SpawnedCarComponents.Clear();
         }
         private void SpawnCarComponents()
@@ -49,6 +51,12 @@ namespace Game.Core.LevelLogic
                     allComponents.Remove(component);
             }
             return allComponents;
+        }
+
+        public void AddCarComponentToDeleteLater(Transform carComponent)
+        {
+            if (m_SpawnedCarComponents.Contains(carComponent)) return;
+            m_SpawnedCarComponents.Add(carComponent);
         }
     }
 }

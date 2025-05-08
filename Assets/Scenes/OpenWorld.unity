@@ -3420,7 +3420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8510967581152644189, guid: 836a2cda2d4f8b147aac077c600bbfd4, type: 3}
       propertyPath: m_CarComponents.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8510967581152644189, guid: 836a2cda2d4f8b147aac077c600bbfd4, type: 3}
       propertyPath: 'm_CarComponents.Array.data[0]'

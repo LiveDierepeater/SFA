@@ -1,5 +1,6 @@
 using System;
 using Game.Core;
+using Game.Core.LevelLogic;
 using UnityEngine;
 
 public class CarProxy : MonoBehaviour, IInteractable
@@ -16,46 +17,48 @@ public class CarProxy : MonoBehaviour, IInteractable
     
     [SerializeField] private GameObject m_CarComponentProxyPrefab;
     [SerializeField] private Transform m_SpawnPointTransform;
+    
+    [SerializeField] private Garage m_Garage;
 
     public void UpdateCarProxy()
     {
         DestroyAllProxies();
         
-        var tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Bonnet.position, Quaternion.identity, m_Slot_Bonnet).GetComponent<CarComponentProxy>();
+        var tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Bonnet.position, m_Slot_Bonnet.rotation, m_Slot_Bonnet).GetComponent<CarComponentProxy>();
         tmp.InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetBonnet(),
-            this, false, true, ProxyState.Installed);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
         
-        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Chassis.position, Quaternion.identity, m_Slot_Chassis).GetComponent<CarComponentProxy>();
+        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Chassis.position, m_Slot_Chassis.rotation, m_Slot_Chassis).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetChassis(),
-            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
         
-        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Engine.position, Quaternion.identity, m_Slot_Engine).GetComponent<CarComponentProxy>();
+        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Engine.position, m_Slot_Engine.rotation, m_Slot_Engine).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetEngine(),
-            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
         
-        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_FuelTank.position, Quaternion.identity, m_Slot_FuelTank).GetComponent<CarComponentProxy>();
+        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_FuelTank.position, m_Slot_FuelTank.rotation, m_Slot_FuelTank).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetFuelTank(),
-            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
         
-        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Trunk.position, Quaternion.identity, m_Slot_Trunk).GetComponent<CarComponentProxy>();
+        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Trunk.position, m_Slot_Trunk.rotation, m_Slot_Trunk).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTrunk(),
-            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
         
-        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_LF.position, Quaternion.identity, m_Slot_Wheel_LF).GetComponent<CarComponentProxy>();
+        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_LF.position, m_Slot_Wheel_LF.rotation, m_Slot_Wheel_LF).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
-            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
         
-        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_RF.position, Quaternion.identity, m_Slot_Wheel_RF).GetComponent<CarComponentProxy>();
+        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_RF.position, m_Slot_Wheel_RF.rotation, m_Slot_Wheel_RF).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
-            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
         
-        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_LB.position, Quaternion.identity, m_Slot_Wheel_LB).GetComponent<CarComponentProxy>();
+        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_LB.position, m_Slot_Wheel_LB.rotation, m_Slot_Wheel_LB).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
-            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
         
-        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_RB.position, Quaternion.identity, m_Slot_Wheel_RB).GetComponent<CarComponentProxy>();
+        tmp = Instantiate(m_CarComponentProxyPrefab, m_Slot_Wheel_RB.position, m_Slot_Wheel_RB.rotation, m_Slot_Wheel_RB).GetComponent<CarComponentProxy>();
         tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
-            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position);
+            this, false, true, ProxyState.Installed, m_SpawnPointTransform.position, m_Garage);
     }
     
     public void RemoveProxy(CarComponentProxy carComponentProxy)
@@ -67,36 +70,42 @@ public class CarProxy : MonoBehaviour, IInteractable
             case Bonnet:
                 if (m_Slot_Bonnet.childCount > 0 && m_Slot_Bonnet.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_Bonnet.GetChild(0));
                     m_Slot_Bonnet.DetachChildren();
                 }
                 break;
             case Chassis:
                 if (m_Slot_Chassis.childCount > 0 && m_Slot_Chassis.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_Chassis.GetChild(0));
                     m_Slot_Chassis.DetachChildren();
                 }
                 break;
             case Engine:
                 if (m_Slot_Engine.childCount > 0 && m_Slot_Engine.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_Engine.GetChild(0));
                     m_Slot_Engine.DetachChildren();
                 }
                 break;
             case FuelTank:
                 if (m_Slot_FuelTank.childCount > 0 && m_Slot_FuelTank.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_FuelTank.GetChild(0));
                     m_Slot_FuelTank.DetachChildren();
                 }
                 break;
             case Trunk:
                 if (m_Slot_Trunk.childCount > 0 && m_Slot_Trunk.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_Trunk.GetChild(0));
                     m_Slot_Trunk.DetachChildren();
                 }
                 break;
             case Tires:
                 if (m_Slot_Wheel_LF.childCount > 0 && m_Slot_Wheel_LF.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_Wheel_LF.GetChild(0));
                     m_Slot_Wheel_LF.DetachChildren();
                     
                     Destroy(m_Slot_Wheel_RF.GetChild(0).gameObject);
@@ -105,6 +114,7 @@ public class CarProxy : MonoBehaviour, IInteractable
                 }
                 else if (m_Slot_Wheel_RF.childCount > 0 && m_Slot_Wheel_RF.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_Wheel_RF.GetChild(0));
                     m_Slot_Wheel_RF.DetachChildren();
                     
                     Destroy(m_Slot_Wheel_LF.GetChild(0).gameObject);
@@ -113,6 +123,7 @@ public class CarProxy : MonoBehaviour, IInteractable
                 }
                 else if (m_Slot_Wheel_LB.childCount > 0 && m_Slot_Wheel_LB.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_Wheel_LB.GetChild(0));
                     m_Slot_Wheel_LB.DetachChildren();
                     
                     Destroy(m_Slot_Wheel_LF.GetChild(0).gameObject);
@@ -121,6 +132,7 @@ public class CarProxy : MonoBehaviour, IInteractable
                 }
                 else if (m_Slot_Wheel_RB.childCount > 0 && m_Slot_Wheel_RB.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)
                 {
+                    m_Garage.AddCarComponentToDeleteLater(m_Slot_Wheel_RB.GetChild(0));
                     m_Slot_Wheel_RB.DetachChildren();
                     
                     Destroy(m_Slot_Wheel_LF.GetChild(0).gameObject);
@@ -148,6 +160,7 @@ public class CarProxy : MonoBehaviour, IInteractable
                 break;
             case Tires:
                 carComponentProxy.transform.SetParent(m_Slot_Wheel_LF.transform);
+                
                 var tmp = Instantiate(carComponentProxy, m_Slot_Wheel_RF.transform, false);
                 tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(
                     GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
@@ -172,31 +185,31 @@ public class CarProxy : MonoBehaviour, IInteractable
     private void DestroyAllProxies()
     {
         if (m_Slot_Bonnet.childCount > 0)
-            Destroy(m_Slot_Bonnet.GetChild(0));
+            Destroy(m_Slot_Bonnet.GetChild(0).gameObject);
         
         if (m_Slot_Chassis.childCount > 0)
-            Destroy(m_Slot_Chassis.GetChild(0));
+            Destroy(m_Slot_Chassis.GetChild(0).gameObject);
         
         if (m_Slot_Engine.childCount > 0)
-            Destroy(m_Slot_Engine.GetChild(0));
+            Destroy(m_Slot_Engine.GetChild(0).gameObject);
         
         if (m_Slot_FuelTank.childCount > 0)
-            Destroy(m_Slot_FuelTank.GetChild(0));
+            Destroy(m_Slot_FuelTank.GetChild(0).gameObject);
         
         if (m_Slot_Trunk.childCount > 0)
-            Destroy(m_Slot_Trunk.GetChild(0));
+            Destroy(m_Slot_Trunk.GetChild(0).gameObject);
         
         if (m_Slot_Wheel_LF.childCount > 0)
-            Destroy(m_Slot_Wheel_LF.GetChild(0));
+            Destroy(m_Slot_Wheel_LF.GetChild(0).gameObject);
         
         if (m_Slot_Wheel_RF.childCount > 0)
-            Destroy(m_Slot_Wheel_RF.GetChild(0));
+            Destroy(m_Slot_Wheel_RF.GetChild(0).gameObject);
         
         if (m_Slot_Wheel_LB.childCount > 0)
-            Destroy(m_Slot_Wheel_LB.GetChild(0));
+            Destroy(m_Slot_Wheel_LB.GetChild(0).gameObject);
         
         if (m_Slot_Wheel_RB.childCount > 0)
-            Destroy(m_Slot_Wheel_RB.GetChild(0));
+            Destroy(m_Slot_Wheel_RB.GetChild(0).gameObject);
     }
     
     public bool HasBonnet() => m_Slot_Bonnet.childCount > 0;

@@ -1,5 +1,6 @@
 using System;
 using Game.Core;
+using Game.Core.LevelLogic;
 using UnityEngine;
 
 public enum ProxyState
@@ -20,7 +21,7 @@ public class CarComponentProxy : MonoBehaviour, IInteractable
     private CarProxy m_CarProxy;
     private Vector3 m_SpawnPoint;
     
-    public void InitializeCarComponentProxy(CarComponent carComponent, CarProxy carProxy = null, bool removeRigidbody = false, bool isKinematic = false, ProxyState proxyState = ProxyState.Free, Vector3 spawnPoint = default(Vector3))
+    public void InitializeCarComponentProxy(CarComponent carComponent, CarProxy carProxy = null, bool removeRigidbody = false, bool isKinematic = false, ProxyState proxyState = ProxyState.Free, Vector3 spawnPoint = default(Vector3), Garage garage = null)
     {
         if (!carComponent)
             throw new Exception("CarComponent is null!");
@@ -33,11 +34,13 @@ public class CarComponentProxy : MonoBehaviour, IInteractable
         
         m_CarProxy = carProxy;
         m_SpawnPoint = spawnPoint == default(Vector3) ? transform.position : spawnPoint;
-
+        
         TryGetComponent(out Rigidbody _rigidbody);
         _rigidbody.isKinematic = isKinematic;
         
         m_ProxyState  = proxyState;
+        
+        if (garage) garage.AddCarComponentToDeleteLater(transform);
         
         // Remove Rigidbody if it is not needed
         if (!removeRigidbody) return;
