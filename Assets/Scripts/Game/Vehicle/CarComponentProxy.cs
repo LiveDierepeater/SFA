@@ -20,7 +20,7 @@ public class CarComponentProxy : MonoBehaviour, IInteractable
     private CarProxy m_CarProxy;
     private Vector3 m_SpawnPoint;
     
-    public void InitializeCarComponentProxy(CarComponent carComponent, CarProxy carProxy = null, bool removeRigidbody = false, bool isKinematic = false)
+    public void InitializeCarComponentProxy(CarComponent carComponent, CarProxy carProxy = null, bool removeRigidbody = false, bool isKinematic = false, ProxyState proxyState = ProxyState.Free)
     {
         if (!carComponent)
             throw new Exception("CarComponent is null!");
@@ -36,6 +36,8 @@ public class CarComponentProxy : MonoBehaviour, IInteractable
         
         TryGetComponent(out Rigidbody _rigidbody);
         _rigidbody.isKinematic = isKinematic;
+        
+        m_ProxyState  = proxyState;
         
         // Remove Rigidbody if it is not needed
         if (!removeRigidbody) return;
@@ -117,7 +119,7 @@ public class CarComponentProxy : MonoBehaviour, IInteractable
         if (m_ProxyState == ProxyState.Snapped)
         {
             m_ProxyState = ProxyState.Installed;
-            
+            m_CarProxy.InstallProxy(this);
             if (TryGetComponent(out Rigidbody _rigidbody)) _rigidbody.isKinematic = true;
         }
         else
