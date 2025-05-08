@@ -1,6 +1,7 @@
 using System;
 using Game.Core;
 using Game.Core.LevelLogic;
+using Game.Vehicle.Stats;
 using UnityEngine;
 
 public class CarProxy : MonoBehaviour, IInteractable
@@ -218,7 +219,29 @@ public class CarProxy : MonoBehaviour, IInteractable
     public bool HasFuelTank() => m_Slot_FuelTank.childCount > 0;
     public bool HasTrunk() => m_Slot_Trunk.childCount > 0;
     public bool HasWheel_LF() => m_Slot_Wheel_LF.childCount > 0;
-    
+    public bool HasAllComponentsBuildIn() => HasBonnet() && HasChassis() && HasEngine() && HasFuelTank() && HasTrunk() && HasWheel_LF();
+
+    public CarComponents GetInstalledCarComponents() =>
+        new(
+            mBonnet: HasBonnet()
+                ? m_Slot_Bonnet.GetChild(0).GetComponent<CarComponentProxy>().GetCarComponent() as SOBonnet
+                : null,
+            mChassis: HasChassis()
+                ? m_Slot_Chassis.GetChild(0).GetComponent<CarComponentProxy>().GetCarComponent() as SOChassis
+                : null,
+            mEngine: HasEngine()
+                ? m_Slot_Engine.GetChild(0).GetComponent<CarComponentProxy>().GetCarComponent() as SOEngine
+                : null,
+            mFuelTank: HasFuelTank()
+                ? m_Slot_FuelTank.GetChild(0).GetComponent<CarComponentProxy>().GetCarComponent() as SOFuelTank
+                : null,
+            mTires: HasWheel_LF()
+                ? m_Slot_Wheel_LF.GetChild(0).GetComponent<CarComponentProxy>().GetCarComponent() as SOTires
+                : null,
+            mTrunk: HasTrunk()
+                ? m_Slot_Trunk.GetChild(0).GetComponent<CarComponentProxy>().GetCarComponent() as SOTrunk
+                : null);
+
     public Transform GetSlot_Bonnet() => m_Slot_Bonnet;
     public Transform GetSlot_Chassis() => m_Slot_Chassis;
     public Transform GetSlot_Engine() => m_Slot_Engine;

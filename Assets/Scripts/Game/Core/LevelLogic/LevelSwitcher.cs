@@ -40,7 +40,7 @@ namespace Game.Core.LevelLogic
         RacingUI
     }
     
-    public sealed class LevelSwitcher : MonoBehaviour, IInteractable
+    public class LevelSwitcher : MonoBehaviour, IInteractable
     {
         private bool m_interactable = true;
     
@@ -97,7 +97,7 @@ namespace Game.Core.LevelLogic
                 case SwitcherType.Level:
                     HandleVehicle();
                     HandleUI();
-                    m_NextLevel.SwitchToLevel();
+                    CallLevelSwitch();
                     break;
             
                 case SwitcherType.Scene:
@@ -108,6 +108,8 @@ namespace Game.Core.LevelLogic
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        protected virtual void CallLevelSwitch() => m_NextLevel.SwitchToLevel();
 
         private void HandleVehicle()
         {

@@ -423,9 +423,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 738138060238623622}
+  - component: {fileID: 6047593448853304441}
   - component: {fileID: 2520519620647190973}
   - component: {fileID: 449349853022679247}
-  - component: {fileID: 6047593448853304441}
   m_Layer: 7
   m_Name: Car
   m_TagString: Player
@@ -451,38 +451,6 @@ Transform:
   - {fileID: 5671183008578764112}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2520519620647190973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9050553515825463359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceaeec0a906ebbc439e110a309f19e13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CenterOfMass: {fileID: 5671183008578764112}
-  m_CarStats:
-    m_BaseStats: {fileID: 11400000, guid: 110047661e6d41543b912fe8beeee281, type: 2}
-  DebugMode: 1
-  DEBUG_MaxSpeed: 0
-  DEBUG_MotorTorque: 0
-  DEBUG_Acceleration: 0
-  DEBUG_MaxSteer: 0
---- !u!114 &449349853022679247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9050553515825463359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64253ae461574f369e71aafd1f0298ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &6047593448853304441
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -510,6 +478,44 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2520519620647190973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9050553515825463359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceaeec0a906ebbc439e110a309f19e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CenterOfMass: {fileID: 5671183008578764112}
+  m_CarStats:
+    m_BaseStats: {fileID: 11400000, guid: 110047661e6d41543b912fe8beeee281, type: 2}
+  DebugMode: 1
+  DEBUG_MaxSpeed: 0
+  DEBUG_MotorTorque: 0
+  DEBUG_Acceleration: 0
+  DEBUG_MaxSteer: 0
+  DEBUG_CurrentConsumption: 0
+  DEBUG_CurrentAcceleration: 0
+  DEBUG_CurrentSpeed: 0
+  DEBUG_CurrentTraction: 0
+  DEBUG_CurrentFuelTankVolume: 0
+  DEBUG_CurrentMass: 0
+--- !u!114 &449349853022679247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9050553515825463359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64253ae461574f369e71aafd1f0298ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4116293856235760256
 PrefabInstance:
   m_ObjectHideFlags: 0

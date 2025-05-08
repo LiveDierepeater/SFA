@@ -105,6 +105,7 @@ namespace Game.Vehicle
             {
                 wheel.ApplyTorque(value * m_CarStats.GetTorque());
                 m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (m_CarStats.GetAcceleration() * 0.2f * value), ForceMode.Acceleration);
+                print(m_CarStats.GetAcceleration());
             }
         }
 
@@ -119,7 +120,9 @@ namespace Game.Vehicle
     
         public Rigidbody GetRigidbody() => m_Rigidbody;
         public CarStats GetCarStats() => m_CarStats;
-    
+        
+        public void UpdateCarStats(CarComponents carComponents) => m_CarStats.UpdateCarStats(carComponents);
+
         private void UpdateDebugValues()
         {
             DEBUG_MaxSpeed = m_CarStats.GetMaxSpeed();

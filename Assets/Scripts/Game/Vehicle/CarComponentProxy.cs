@@ -11,7 +11,7 @@ public enum ProxyState
     Installed
 }
 
-public class CarComponentProxy : MonoBehaviour, IInteractable
+public class CarComponentProxy : MonoBehaviour, IInteractable 
 {
     public ProxyState m_ProxyState = ProxyState.Free;
 

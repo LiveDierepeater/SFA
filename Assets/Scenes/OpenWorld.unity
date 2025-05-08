@@ -1108,6 +1108,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5058109324155033782, guid: c1692dede33c4d5448640514379e6670, type: 3}
   m_PrefabInstance: {fileID: 757835503}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &792277744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2404422226712019481, guid: d4d28ec81a668ce42a405be42689f794, type: 3}
+  m_PrefabInstance: {fileID: 749055564886196143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &792277750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792277744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f5bed464878af45a3859e8a6019f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TriggerType: 0
+  m_SwitcherType: 0
+  m_NextLevel: {fileID: 1382932449}
+  m_NextSceneName: 
+  m_VehicleSpawnPoint: {fileID: 0}
+  m_RespawnVehicle: 0
+  m_NeutralizeVehicleVelocity: 0
+  m_CarControllerState: 0
+  m_UIHandling: 0
+  m_UIToProcess: 
+  m_Garage: {fileID: 1144943229}
 --- !u!1 &851121984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1657,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5058109324155033782, guid: c1692dede33c4d5448640514379e6670, type: 3}
   m_PrefabInstance: {fileID: 1076889114}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1144943229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1370403345055921664, guid: d4d28ec81a668ce42a405be42689f794, type: 3}
+  m_PrefabInstance: {fileID: 749055564886196143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c519914e650291246a4b859fba3f519c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1170268692
 GameObject:
   m_ObjectHideFlags: 0
@@ -3260,10 +3299,14 @@ PrefabInstance:
       propertyPath: m_VehicleSpawnPoint
       value: 
       objectReference: {fileID: 169445304}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6270764518355878410, guid: d4d28ec81a668ce42a405be42689f794, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2404422226712019481, guid: d4d28ec81a668ce42a405be42689f794, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 792277750}
   m_SourcePrefab: {fileID: 100100000, guid: d4d28ec81a668ce42a405be42689f794, type: 3}
 --- !u!1001 &3717627085828558264
 PrefabInstance:

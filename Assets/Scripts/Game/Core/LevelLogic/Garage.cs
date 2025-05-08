@@ -58,6 +58,8 @@ namespace Game.Core.LevelLogic
             if (m_SpawnedCarComponents.Contains(carComponent)) return;
             m_SpawnedCarComponents.Add(carComponent);
         }
+        
+        public CarProxy GetCarProxy() => m_CarProxy;
     }
 }
 

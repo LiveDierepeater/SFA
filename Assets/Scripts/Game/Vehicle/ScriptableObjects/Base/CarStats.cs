@@ -5,6 +5,26 @@ using UnityEngine;
 
 namespace Game.Vehicle.Stats
 {
+    public struct CarComponents
+    {
+        public readonly SOBonnet m_Bonnet;
+        public readonly SOChassis m_Chassis;
+        public readonly SOEngine m_Engine;
+        public readonly SOFuelTank m_FuelTank;
+        public readonly SOTires m_Tires;
+        public readonly SOTrunk m_Trunk;
+
+        public CarComponents(SOBonnet mBonnet, SOChassis mChassis, SOEngine mEngine, SOFuelTank mFuelTank, SOTires mTires, SOTrunk mTrunk)
+        {
+            m_Bonnet = mBonnet;
+            m_Chassis = mChassis;
+            m_Engine = mEngine;
+            m_FuelTank = mFuelTank;
+            m_Tires = mTires;
+            m_Trunk = mTrunk;
+        }
+    }
+    
     [Serializable]
     public class CarStats
     {
@@ -64,5 +84,36 @@ namespace Game.Vehicle.Stats
 
         private void AddComponentToInventory(CarComponent carComponent) => 
             GameManager.Instance.m_Player.GetComponent<Inventory>().AddCarComponentToInventory(carComponent);
+        
+        public void UpdateCarStats(CarComponents carComponents)
+        {
+            if (carComponents.m_Bonnet is null)
+                throw new Exception("Bonnet is null!");
+            if (carComponents.m_Chassis is null)
+                throw new Exception("Chassis is null!");
+            if (carComponents.m_Engine is null)
+                throw new Exception("Engine is null!");
+            if (carComponents.m_FuelTank is null)
+                throw new Exception("FuelTank is null!");
+            if (carComponents.m_Tires is null)
+                throw new Exception("Tires are null!");
+            if (carComponents.m_Trunk is null)
+                throw new Exception("Trunk is null!");
+            
+            // Debugging CarComponent types 
+            //Debug.Log($"Bonnet: {carComponents.m_Bonnet.GetType().Name}");
+            //Debug.Log($"Chassis: {carComponents.m_Chassis.GetType().Name}");
+            //Debug.Log($"Engine: {carComponents.m_Engine.GetType().Name}");
+            //Debug.Log($"FuelTank: {carComponents.m_FuelTank.GetType().Name}");
+            //Debug.Log($"Tires: {carComponents.m_Tires.GetType().Name}");
+            //Debug.Log($"Trunk: {carComponents.m_Trunk.GetType().Name}");
+            
+            SetBonnet(carComponents.m_Bonnet);
+            SetChassis(carComponents.m_Chassis);
+            SetEngine(carComponents.m_Engine);
+            SetFuelTank(carComponents.m_FuelTank);
+            SetTires(carComponents.m_Tires);
+            SetTrunk(carComponents.m_Trunk);
+        }
     }
 }
