@@ -1,5 +1,4 @@
 using Game.Vehicle;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +11,7 @@ namespace Game.Player
         public PlayerControllerEvents OnPrimaryActionReleased;
         
         [SerializeField] private Camera m_CameraTransform;
+        [SerializeField] private LayerMask m_RaytracedLayers;
         [Header("Input")]
         [SerializeField] private InputActionReference m_PrimaryActionReference;
         [SerializeField] private InputActionReference m_GasActionReference;
@@ -59,15 +59,9 @@ namespace Game.Player
 
         private void HandlePrimaryAction(InputAction.CallbackContext ctx)
         {
-            if (!Physics.Raycast(m_CameraTransform.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 9999.0f)) return;
-            hit.transform.TryGetComponent(out IInteractable interactable);
+            if (!Physics.Raycast(m_CameraTransform.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 9999.0f, m_RaytracedLayers)) return;
+            if (!hit.transform.TryGetComponent(out IInteractable interactable)) return;
             
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("InvisWall"))
-            {
-                if (!Physics.Raycast(hit.point + hit.normal, hit.normal, out RaycastHit secondHit, 999.0f)) return;
-                secondHit.transform.TryGetComponent(out interactable);
-            }
-
             interactable?.OnInteract();
         }
         private void HandlePrimaryActionReleased(InputAction.CallbackContext ctx) => OnPrimaryActionReleased?.Invoke();

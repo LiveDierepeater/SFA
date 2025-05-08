@@ -1,7 +1,7 @@
 using Game.Core;
 using UnityEngine;
 
-public class CarProxy : MonoBehaviour
+public class CarProxy : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform m_Slot_Bonnet;
     [SerializeField] private Transform m_Slot_Chassis;
@@ -177,4 +177,5 @@ public class CarProxy : MonoBehaviour
     public Transform GetSlot_Wheel_RF() => m_Slot_Wheel_RF;
     public Transform GetSlot_Wheel_LB() => m_Slot_Wheel_LB;
     public Transform GetSlot_Wheel_RB() => m_Slot_Wheel_RB;
+    public void OnInteract() { }
 }

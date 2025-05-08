@@ -3429,11 +3429,11 @@ PrefabInstance:
     - target: {fileID: 8510967581152644189, guid: 836a2cda2d4f8b147aac077c600bbfd4, type: 3}
       propertyPath: 'm_CarComponents.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 1a7eb96cb96ddab4bb57a1807283704a, type: 2}
+      objectReference: {fileID: 11400000, guid: 9db6770592717904cabfb3a0d1fe5ae9, type: 2}
     - target: {fileID: 8510967581152644189, guid: 836a2cda2d4f8b147aac077c600bbfd4, type: 3}
       propertyPath: 'm_CarComponents.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 9db6770592717904cabfb3a0d1fe5ae9, type: 2}
+      objectReference: {fileID: 11400000, guid: 1a7eb96cb96ddab4bb57a1807283704a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

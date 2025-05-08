@@ -197,6 +197,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CameraTransform: {fileID: 2316050968065362429}
+  m_RaytracedLayers:
+    serializedVersion: 2
+    m_Bits: 497
   m_PrimaryActionReference: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_GasActionReference: {fileID: 7369812530962820603, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_GearActionReference: {fileID: -100700664745409970, guid: 052faaac586de48259a63d0c4782560b, type: 3}
