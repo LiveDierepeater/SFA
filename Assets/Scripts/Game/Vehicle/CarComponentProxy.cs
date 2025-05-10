@@ -30,6 +30,7 @@ public class CarComponentProxy : MonoBehaviour, IInteractable
         var newProxy = Instantiate(m_CarComponent.m_Mesh, transform);
         newProxy.layer = LayerMask.NameToLayer("Components");
         var _collider = newProxy.AddComponent<MeshCollider>();
+        _collider.sharedMesh = carComponent.m_Collision;
         _collider.convex = true;
         
         m_CarProxy = carProxy;
