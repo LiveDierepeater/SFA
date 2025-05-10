@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Obstacle : MonoBehaviour
+public abstract class Obstacle : LevelActor, ILevelActor
 {
     protected virtual void TriggerEnter(Collider other) {}
     protected virtual void TriggerStay(Collider other) {}
@@ -11,4 +11,7 @@ public abstract class Obstacle : MonoBehaviour
     private void OnTriggerExit(Collider other) => TriggerExit(other);
 
     protected virtual bool IsAbleToMaster() => true;
+    public override void OnResetActor() => ResetObstacle();
+
+    protected virtual void ResetObstacle() {}
 }

@@ -44,8 +44,8 @@ namespace Game.Core.LevelLogic
     {
         private bool m_interactable = true;
     
-        [SerializeField] private TriggerType m_TriggerType;
-        [SerializeField] private SwitcherType m_SwitcherType;
+        [SerializeField] protected TriggerType m_TriggerType;
+        [SerializeField] protected SwitcherType m_SwitcherType;
     
         [ConditionalHide("m_SwitcherType", (int)SwitcherType.Level)]
         [SerializeField] private Level m_NextLevel;
@@ -88,7 +88,7 @@ namespace Game.Core.LevelLogic
         }
         
         private void OnTriggerEnter(Collider other) { if (m_interactable && other.CompareTag("Player")) OnDriveThrough(); }
-        public void OnDriveThrough() => EvaluateSwitcherType();
+        public virtual void OnDriveThrough() => EvaluateSwitcherType();
         
         private void EvaluateSwitcherType()
         {
