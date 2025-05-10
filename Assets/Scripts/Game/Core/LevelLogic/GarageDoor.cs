@@ -19,6 +19,7 @@ public class GarageDoor : LevelSwitcher
         {
             GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateCarStats(m_Garage.GetCarProxy().GetInstalledCarComponents());
             GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().RefillFuelTank();
+            GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateWheelFrictionValues();
             base.CallLevelSwitch();
         }
     }

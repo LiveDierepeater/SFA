@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: MuscleCar
   m_EditorClassIdentifier: 
   m_Mass: 2
+  m_Mesh: {fileID: 0}
+  m_Collision: {fileID: 0}
   m_Aerodynamics: 2
   m_Traction: 2
+  m_FF_Front: 0.8
+  m_SF_Front: 0.6
+  m_FF_Back: 1.3
+  m_SF_Back: 0.5

@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: Classic
   m_EditorClassIdentifier: 
   m_Mass: 1
+  m_Mesh: {fileID: 0}
+  m_Collision: {fileID: 0}
   m_Aerodynamics: 2
   m_Traction: 1
+  m_FF_Front: 0.8
+  m_SF_Front: 0.8
+  m_FF_Back: 1
+  m_SF_Back: 0.8

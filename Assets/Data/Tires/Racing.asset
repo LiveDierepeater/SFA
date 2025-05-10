@@ -17,3 +17,7 @@ MonoBehaviour:
   m_Collision: {fileID: -3774905544965336643, guid: afcf15551484be040ac6bfadfc63212d, type: 3}
   m_Aerodynamics: 3
   m_Traction: 2
+  m_FF_Front: 2.5
+  m_SF_Front: 1
+  m_FF_Back: 2.5
+  m_SF_Back: 2

@@ -115,6 +115,9 @@ namespace Game.Vehicle.Stats
             SetFuelTank(carComponents.m_FuelTank);
             SetTires(carComponents.m_Tires);
             SetTrunk(carComponents.m_Trunk);
+            
+            GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateRigidbodyMass();
+            GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateMaxSpeed();
         }
         
         // ======================= STATS BEHAVIOR ======================= //

@@ -17,6 +17,18 @@ public class Wheel : MonoBehaviour
     public void ApplyTorque(float torque) => m_WheelCollider.motorTorque = torque;
     public void ApplySteerAngle(float angle) => m_WheelCollider.steerAngle = angle;
 
+    public void UpdateStiffnessValues(float forwardStiffness, float sidewaysStiffness)
+    {
+        var forwardFriction = m_WheelCollider.forwardFriction;
+        var sidewaysFriction = m_WheelCollider.sidewaysFriction;
+
+        forwardFriction.stiffness = forwardStiffness;
+        sidewaysFriction.stiffness = sidewaysStiffness;
+
+        m_WheelCollider.forwardFriction = forwardFriction;
+        m_WheelCollider.sidewaysFriction = sidewaysFriction;
+    }
+    
     private void FixedUpdate() => UpdateMeshTransform();
 
     private void UpdateMeshTransform()

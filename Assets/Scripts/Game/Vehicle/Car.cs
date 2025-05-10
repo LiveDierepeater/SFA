@@ -49,9 +49,10 @@ namespace Game.Vehicle
         private void Start()
         {
             m_CarStats.InitializeStats();
-            m_Rigidbody.maxLinearVelocity = m_CarStats.GetMaxSpeed();
-            m_Rigidbody.mass = m_CarStats.GetMass();
+            UpdateMaxSpeed();
+            UpdateRigidbodyMass();
             RefillFuelTank();
+            UpdateWheelFrictionValues();
         }
 
         private void Update() => UpdateDebugValues();
@@ -104,7 +105,10 @@ namespace Game.Vehicle
         private void LimitSpeed()
         {
             if (m_Rigidbody.linearVelocity.magnitude > m_CarStats.GetMaxSpeed())
+            {
+                m_Rigidbody.maxLinearVelocity = m_CarStats.GetMaxSpeed();
                 m_Rigidbody.linearVelocity = m_Rigidbody.linearVelocity.normalized * m_CarStats.GetMaxSpeed();
+            }
         }
 
         private void HandleFuelConsumption(float value)
@@ -126,6 +130,17 @@ namespace Game.Vehicle
         public void RefillFuelTank(float amount) => m_CurrentFuelTankVolume += Mathf.Clamp(m_CurrentFuelTankVolume + amount, 0f, m_CarStats.GetFuelTank().m_Volume);
 
         public void UpdateCarStats(CarComponents carComponents) => m_CarStats.UpdateCarStats(carComponents);
+        public void UpdateRigidbodyMass() => m_Rigidbody.mass = m_CarStats.GetMass();
+        public void UpdateMaxSpeed() => m_Rigidbody.maxLinearVelocity = m_CarStats.GetMaxSpeed();
+
+        public void UpdateWheelFrictionValues() =>
+            m_Wheels.ForEach(wheel =>
+            {
+                if (wheel.IsSteeringWheel())
+                    wheel.UpdateStiffnessValues(m_CarStats.GetTires().m_FF_Front, m_CarStats.GetTires().m_SF_Front);
+                else
+                    wheel.UpdateStiffnessValues(m_CarStats.GetTires().m_FF_Back, m_CarStats.GetTires().m_SF_Back);
+            });
 
         private void UpdateDebugValues()
         {
