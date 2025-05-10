@@ -63,6 +63,7 @@ namespace Game.Vehicle.Stats
         public float GetMaxSteer() => m_BaseStats.m_MaxSteer;
         public float GetMass() => (m_Engine.m_Mass + m_FuelTank.m_Mass + m_Tires.m_Mass + m_Trunk.m_Mass + m_Bonnet.m_Mass + m_Chassis.m_Mass) * m_BaseStats.m_BaseMass;
         public float GetAerodynamics() => m_Tires.m_Aerodynamics + m_Trunk.m_Aerodynamics + m_Bonnet.m_Aerodynamics + m_Chassis.m_Aerodynamics;
+        public float GetBaseConsumption() => m_BaseStats.m_BaseConsumption * m_Engine.m_Consumption;
     
         public void SetBonnet(SOBonnet bonnet) => m_Bonnet = bonnet;
         public void SetChassis(SOChassis chassis) => m_Chassis = chassis;
@@ -115,5 +116,37 @@ namespace Game.Vehicle.Stats
             SetTires(carComponents.m_Tires);
             SetTrunk(carComponents.m_Trunk);
         }
+        
+        // ======================= STATS BEHAVIOR ======================= //
+        //
+        //
+        // more mass -> more consumption
+        // more aerodynamics -> less consumption
+        // more weight -> less acceleration
+        // more aerodynamics -> more acceleration
+    
+        // a consumption of 1 is enough to cross 1 map tile
+        // affected value = base value + adaption value * affection scale
+    
+        // aerodynamic has a lot of influence on the car
+        // racing tires have more sideways friction
+        
+        // STATIC VALUES:           FLEXIBLE VALUES:
+        // - aerodynamics           - acceleration
+        // - mass                   - fuel consumption
+        // - torque
+        // - traction
+        // - fuel amount
+        // - speed
+        // ============================================================== //
+        
+        public float GetCurrentAcceleration() =>
+            GetAcceleration() / 2f * (GetMass() / m_BaseStats.GetStandardMass()) +
+            GetAcceleration() / 2f * (GetAerodynamics() / m_BaseStats.GetStandardAerodynamics());
+
+        public float GetCurrentConsumption() =>
+            GetBaseConsumption() * (1f + GetMass() / m_BaseStats.GetMinPossibleMass())
+                                 * (1f - (GetAerodynamics() + 1f) / (m_BaseStats.GetMaxPossibleAerodynamics() + 1f))
+                                 + m_BaseStats.m_BaseConsumption;
     }
 }

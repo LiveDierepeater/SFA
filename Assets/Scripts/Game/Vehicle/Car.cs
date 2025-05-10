@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Vehicle.Stats;
@@ -21,14 +20,14 @@ namespace Game.Vehicle
     
         private List<Wheel> m_Wheels;
         private Rigidbody m_Rigidbody;
+        
+        private float m_CurrentFuelTankVolume;
 
         #region Debug
 
         [Header("Debug")] public ShowDebug DebugMode;
         [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MaxSpeed;
         [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MotorTorque;
-        [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_Acceleration;
-        [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_MaxSteer;
         [Space(10)]
         [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentConsumption;
         [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentAcceleration;
@@ -38,17 +37,6 @@ namespace Game.Vehicle
         [ConditionalHide("DebugMode", (int)ShowDebug.Show)]    public float DEBUG_CurrentMass;
 
         #endregion
-    
-        // more mass -> more consumption
-        // more aerodynamics -> less consumption
-        // more weight -> less acceleration
-        // more aerodynamics -> more acceleration
-    
-        // a consumption of 1 is enough to cross 1 map tile
-        // affected value = base value + adaption value * affection scale
-    
-        // aerodynamic has a lot of influence on the car
-        // racing tires have more sideways friction
     
         private void Awake()
         {
@@ -62,20 +50,22 @@ namespace Game.Vehicle
         {
             m_CarStats.InitializeStats();
             m_Rigidbody.maxLinearVelocity = m_CarStats.GetMaxSpeed();
+            m_Rigidbody.mass = m_CarStats.GetMass();
+            RefillFuelTank();
         }
 
         private void Update() => UpdateDebugValues();
 
         public void HandleGasInput(float value)
         {
-            foreach (var wheel in m_Wheels)
-            {
-                // If the wheel is not powered, we don't want to apply torque to it
-                if (!wheel.IsPoweredWheel()) continue;
+            if (!HasEnoughFuel()) return;
             
+            HandleFuelConsumption(value);
+            
+            foreach (var wheel in m_Wheels.Where(wheel => wheel.IsPoweredWheel()))
                 BreakingAndAcceleration(value, wheel);
-                LimitSpeed();
-            }
+            
+            LimitSpeed();
         }
         public void HandleGearInput(float value)
         {
@@ -105,7 +95,6 @@ namespace Game.Vehicle
             {
                 wheel.ApplyTorque(value * m_CarStats.GetTorque());
                 m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (m_CarStats.GetAcceleration() * 0.2f * value), ForceMode.Acceleration);
-                print(m_CarStats.GetAcceleration());
             }
         }
 
@@ -117,41 +106,34 @@ namespace Game.Vehicle
             if (m_Rigidbody.linearVelocity.magnitude > m_CarStats.GetMaxSpeed())
                 m_Rigidbody.linearVelocity = m_Rigidbody.linearVelocity.normalized * m_CarStats.GetMaxSpeed();
         }
+
+        private void HandleFuelConsumption(float value)
+        {
+            if (value == 0) return;
+            
+            m_CurrentFuelTankVolume =
+                Mathf.Clamp(m_CurrentFuelTankVolume - m_CarStats.GetCurrentConsumption() * Time.fixedDeltaTime,
+                    0f,
+                    m_CarStats.GetFuelTank().m_Volume);
+        }
     
         public Rigidbody GetRigidbody() => m_Rigidbody;
         public CarStats GetCarStats() => m_CarStats;
-        
+
+        public bool HasEnoughFuel() => m_CurrentFuelTankVolume > 0;
+        public float GetCurrentFuelTankVolume() => m_CurrentFuelTankVolume;
+        public void RefillFuelTank() => m_CurrentFuelTankVolume = m_CarStats.GetFuelTank().m_Volume;
+        public void RefillFuelTank(float amount) => m_CurrentFuelTankVolume += Mathf.Clamp(m_CurrentFuelTankVolume + amount, 0f, m_CarStats.GetFuelTank().m_Volume);
+
         public void UpdateCarStats(CarComponents carComponents) => m_CarStats.UpdateCarStats(carComponents);
 
         private void UpdateDebugValues()
         {
             DEBUG_MaxSpeed = m_CarStats.GetMaxSpeed();
             DEBUG_MotorTorque = m_CarStats.GetTorque();
-            DEBUG_Acceleration = m_CarStats.GetAcceleration();
-            DEBUG_MaxSteer = m_CarStats.GetMaxSteer();
-
-            DEBUG_CurrentConsumption =
-                m_CarStats.GetEngine().m_Consumption
-                * (1f + m_CarStats.GetMass() / 6f * m_CarStats.GetBaseStats().m_BaseMass)
-                * (1f - m_CarStats.GetAerodynamics() / 12f);
-        
-            DEBUG_CurrentAcceleration =
-                m_CarStats.GetTorque()
-                * (1f + m_CarStats.GetAerodynamics() / 1.2f)
-                / m_CarStats.GetMass();
-
-            DEBUG_CurrentSpeed =
-                m_CarStats.GetTorque() / m_CarStats.GetMass()
-                * (1f + m_CarStats.GetAerodynamics() / 1.2f);
-
-            DEBUG_CurrentTraction =
-                m_CarStats.GetTires().m_Traction
-                + m_CarStats.GetMass() / 6f * m_CarStats.GetBaseStats().m_BaseMass;
-        
-            DEBUG_CurrentFuelTankVolume =
-                m_CarStats.GetFuelTank().m_Volume
-                + m_CarStats.GetMass() / 6f * m_CarStats.GetBaseStats().m_BaseMass;
-        
+            DEBUG_CurrentConsumption = m_CarStats.GetCurrentConsumption();
+            DEBUG_CurrentAcceleration = m_CarStats.GetCurrentAcceleration();
+            DEBUG_CurrentFuelTankVolume = m_CurrentFuelTankVolume;
             DEBUG_CurrentMass = m_CarStats.GetMass();
         }
     }

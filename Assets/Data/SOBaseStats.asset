@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034166e8f107cf2469ddbfa5db3f69be, type: 3}
   m_Name: SOBaseStats
   m_EditorClassIdentifier: 
-  m_Engine: {fileID: 11400000, guid: 9b92ff471ac480e4d8f4c42b6b1a6d24, type: 2}
-  m_FuelTank: {fileID: 11400000, guid: 2bc90679d2ba85f419e50aca41b9aa86, type: 2}
+  m_Engine: {fileID: 11400000, guid: 1a7eb96cb96ddab4bb57a1807283704a, type: 2}
+  m_FuelTank: {fileID: 11400000, guid: 22054238a55c94a43ac0bd7e8e96ebc1, type: 2}
   m_Tires: {fileID: 11400000, guid: f22827c1022d6d541926376707687436, type: 2}
   m_Trunk: {fileID: 11400000, guid: 46acd516ed1a04740897085bdcb5bafd, type: 2}
   m_Bonnet: {fileID: 11400000, guid: d066a2299cadfae44873ac6e5a10b31b, type: 2}
   m_Chassis: {fileID: 11400000, guid: 01466b10c083a8341a40c81f54ea9412, type: 2}
-  m_MaxSpeed: 4
+  m_MaxSpeed: 7
   m_MotorTorque: 250
   m_Acceleration: 4
   m_MaxSteer: 20
+  m_BaseMass: 50
+  m_BaseConsumption: 0.1
