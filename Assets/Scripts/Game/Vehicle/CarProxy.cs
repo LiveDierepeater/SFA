@@ -67,7 +67,6 @@ public class CarProxy : MonoBehaviour, IInteractable
         if (carComponentProxy == null) return;
 
         var carComponent = carComponentProxy.GetCarComponent();
-        GameManager.Instance.m_Player.GetComponent<Inventory>().AddCarComponentToInventory(carComponent);
         
         switch (carComponent)
         {

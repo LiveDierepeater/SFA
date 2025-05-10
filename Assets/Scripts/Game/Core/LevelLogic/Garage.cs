@@ -43,12 +43,15 @@ namespace Game.Core.LevelLogic
         }
         private static List<CarComponent> GetCarComponentsToSpawn()
         {
-            var carComponentsToSpawn = GameManager.Instance.m_Player.GetComponent<Inventory>().GetCarComponents();
-            foreach (var component in GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetCarComponents())
+            var carComponentsToSpawn =
+                GameManager.Instance.m_Player.GetComponent<Inventory>().GetCarComponents().ToList();
+
+            foreach (var component in GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetCarComponents().
+                         Where(component => carComponentsToSpawn.Contains(component)))
             {
-                if (carComponentsToSpawn.Contains(component))
-                    carComponentsToSpawn.Remove(component);
+                carComponentsToSpawn.Remove(component);
             }
+            
             return carComponentsToSpawn;
         }
 
