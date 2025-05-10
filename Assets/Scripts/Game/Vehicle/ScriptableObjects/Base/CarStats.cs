@@ -64,6 +64,7 @@ namespace Game.Vehicle.Stats
         public float GetMass() => (m_Engine.m_Mass + m_FuelTank.m_Mass + m_Tires.m_Mass + m_Trunk.m_Mass + m_Bonnet.m_Mass + m_Chassis.m_Mass) * m_BaseStats.m_BaseMass;
         public float GetAerodynamics() => m_Tires.m_Aerodynamics + m_Trunk.m_Aerodynamics + m_Bonnet.m_Aerodynamics + m_Chassis.m_Aerodynamics;
         public float GetBaseConsumption() => m_BaseStats.m_BaseConsumption * m_Engine.m_Consumption;
+        public float GetAllMassPoints() => m_Engine.m_Mass + m_FuelTank.m_Mass + m_Tires.m_Mass + m_Trunk.m_Mass + m_Bonnet.m_Mass + m_Chassis.m_Mass;
     
         public void SetBonnet(SOBonnet bonnet) => m_Bonnet = bonnet;
         public void SetChassis(SOChassis chassis) => m_Chassis = chassis;

@@ -4019,7 +4019,7 @@ GameObject:
   - component: {fileID: 6796521584981487622}
   - component: {fileID: 7290027675201128824}
   - component: {fileID: 1260763958317365386}
-  - component: {fileID: 6270764518355878410}
+  - component: {fileID: 6039845432978583338}
   m_Layer: 0
   m_Name: GarageDoor
   m_TagString: Untagged
@@ -4116,7 +4116,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6270764518355878410
+--- !u!114 &6039845432978583338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4125,7 +4125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2404422226712019481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b05e72c7f440ecb2cefe796825fcea, type: 3}
+  m_Script: {fileID: 11500000, guid: b7f5bed464878af45a3859e8a6019f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_TriggerType: 0
@@ -4138,6 +4138,7 @@ MonoBehaviour:
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 
+  m_Garage: {fileID: 1370403345055921664}
 --- !u!1 &2460029324428361948
 GameObject:
   m_ObjectHideFlags: 0
