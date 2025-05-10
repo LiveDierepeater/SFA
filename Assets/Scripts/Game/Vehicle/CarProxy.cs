@@ -65,8 +65,11 @@ public class CarProxy : MonoBehaviour, IInteractable
     public void RemoveProxy(CarComponentProxy carComponentProxy)
     {
         if (carComponentProxy == null) return;
+
+        var carComponent = carComponentProxy.GetCarComponent();
+        GameManager.Instance.m_Player.GetComponent<Inventory>().AddCarComponentToInventory(carComponent);
         
-        switch (carComponentProxy.GetCarComponent())
+        switch (carComponent)
         {
             case Bonnet:
                 if (m_Slot_Bonnet.childCount > 0 && m_Slot_Bonnet.GetChild(0).GetComponent<CarComponentProxy>() == carComponentProxy)

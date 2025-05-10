@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Game.Player;
 using UnityEngine;
 
 namespace Game.Core.LevelLogic
@@ -44,13 +43,13 @@ namespace Game.Core.LevelLogic
         }
         private static List<CarComponent> GetCarComponentsToSpawn()
         {
-            var allComponents = GameManager.Instance.m_Player.GetComponent<Inventory>().GetCarComponents();
-            foreach (var component in GameManager.Instance.m_Player.GetComponent<PlayerController>().GetCarController().GetCar().GetCarStats().GetCarComponents())
+            var carComponentsToSpawn = GameManager.Instance.m_Player.GetComponent<Inventory>().GetCarComponents();
+            foreach (var component in GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetCarComponents())
             {
-                if (allComponents.Contains(component))
-                    allComponents.Remove(component);
+                if (carComponentsToSpawn.Contains(component))
+                    carComponentsToSpawn.Remove(component);
             }
-            return allComponents;
+            return carComponentsToSpawn;
         }
 
         public void AddCarComponentToDeleteLater(Transform carComponent)
