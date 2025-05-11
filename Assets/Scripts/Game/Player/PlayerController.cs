@@ -1,9 +1,16 @@
+using System;
 using Game.Vehicle;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Game.Player
 {
+    public enum PlayerInputType
+    {
+        KeyboardMouse,
+        Mobile
+    }
+    
     public class PlayerController : MonoBehaviour
     {
         public delegate void PlayerControllerEvents();
@@ -21,6 +28,9 @@ namespace Game.Player
         private Player m_Player;
 
         [SerializeField] private bool m_CarInputEnabled;
+        [SerializeField] private PlayerInputType m_PlayerInputType = PlayerInputType.KeyboardMouse;
+        [SerializeField] private FixedJoystick m_GasJoystick;
+        [SerializeField] private FixedJoystick m_GearJoystick;
         private float m_CurrentGasInput;
         private float m_CurrentGearInput;
         
@@ -50,8 +60,21 @@ namespace Game.Player
 
         private void HandleCarInput()
         {
-            m_CurrentGasInput = m_GasActionReference.action.ReadValue<float>();
-            m_CurrentGearInput = m_GearActionReference.action.ReadValue<float>();
+            switch (m_PlayerInputType)
+            {
+                case PlayerInputType.KeyboardMouse:
+                    m_CurrentGasInput = m_GasActionReference.action.ReadValue<float>();
+                    m_CurrentGearInput = m_GearActionReference.action.ReadValue<float>();
+                    break;
+                
+                case PlayerInputType.Mobile:
+                    m_CurrentGasInput = m_GasJoystick.Vertical;
+                    m_CurrentGearInput = m_GearJoystick.Horizontal;
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             
             HandleGasAction(m_CurrentGasInput);
             HandleGearAction(m_CurrentGearInput);
