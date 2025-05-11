@@ -1483,6 +1483,7 @@ MonoBehaviour:
   m_VehicleSpawnPoint: {fileID: 0}
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
+  m_RefillFuelTank: 0
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 
@@ -4135,6 +4136,7 @@ MonoBehaviour:
   m_VehicleSpawnPoint: {fileID: 0}
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
+  m_RefillFuelTank: 0
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 
@@ -7495,6 +7497,7 @@ MonoBehaviour:
   m_VehicleSpawnPoint: {fileID: 0}
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
+  m_RefillFuelTank: 0
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 
@@ -9082,6 +9085,7 @@ MonoBehaviour:
   m_VehicleSpawnPoint: {fileID: 0}
   m_RespawnVehicle: 1
   m_NeutralizeVehicleVelocity: 1
+  m_RefillFuelTank: 1
   m_CarControllerState: 2
   m_UIHandling: 2
   m_UIToProcess: 01000000
@@ -15842,6 +15846,7 @@ MonoBehaviour:
   m_VehicleSpawnPoint: {fileID: 0}
   m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
+  m_RefillFuelTank: 0
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 

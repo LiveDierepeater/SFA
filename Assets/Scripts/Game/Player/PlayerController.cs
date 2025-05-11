@@ -66,53 +66,21 @@ namespace Game.Player
         }
         private void HandlePrimaryActionReleased(InputAction.CallbackContext ctx) => OnPrimaryActionReleased?.Invoke();
 
-        private void HandleGasAction(InputAction.CallbackContext ctx)
-        {
-            if (!m_Player.IsAbleToDrive()) return;
-            
-            m_CarController.HandleGasInput(ctx.ReadValue<float>());
-        }
         private void HandleGasAction(float value)
         {
             if (!m_Player.IsAbleToDrive()) return;
             m_CarController.HandleGasInput(value);
-        }
-
-        private void HandleGearAction(InputAction.CallbackContext ctx)
-        {
-            if (!m_Player.IsAbleToDrive()) return;
-            m_CarController.HandleGearInput(ctx.ReadValue<float>());
         }
         private void HandleGearAction(float value)
         {
             if (!m_Player.IsAbleToDrive()) return;
             m_CarController.HandleGearInput(value);
         }
-        
-        private void ReleaseGasAction(InputAction.CallbackContext ctx)
-        {
-            if (!m_Player.IsAbleToDrive() || Mathf.Abs(ctx.ReadValue<float>()) >= 0.2f) return;
-            
-            m_CarController.HandleGasInput(0);
-        }
-
-        private void ReleaseGearAction(InputAction.CallbackContext ctx)
-        {
-            if (!m_Player.IsAbleToDrive() || Mathf.Abs(ctx.ReadValue<float>()) >= 0.2f) return;
-            
-            m_CarController.HandleGearInput(0);
-        }
 
         public CarController GetCarController() => m_CarController;
         
         public void EnableCarInput() => m_CarInputEnabled = true;
-        public void DisableCarInput()
-        {
-            m_CarController.HandleGasInput(0);
-            m_CarController.HandleGearInput(0);
-            m_CarInputEnabled = false;
-        }
-
+        public void DisableCarInput() => m_CarInputEnabled = false;
         public bool IsCarInputEnabled() => m_CarInputEnabled;
     }
 }

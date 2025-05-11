@@ -59,9 +59,15 @@ namespace Game.Vehicle
 
         public void HandleGasInput(float value)
         {
-            if (!HasEnoughFuel()) return;
-            
-            HandleFuelConsumption(value);
+            if (!HasEnoughFuel())
+            {
+                foreach (var wheel in m_Wheels.Where(wheel => wheel.IsPoweredWheel()))
+                {
+                    wheel.ApplyTorque(0f);
+                    wheel.ApplyBrakeTorque(3000f);
+                }
+                return;
+            }
             
             foreach (var wheel in m_Wheels.Where(wheel => wheel.IsPoweredWheel()))
                 BreakingAndAcceleration(value, wheel);
@@ -87,16 +93,26 @@ namespace Game.Vehicle
             // If the car rolls backwards but the input is forwards, we want to accelerate the car quicker
             if (direction > 0 && value < 0 || direction < 0 && value > 0)
             {
-                //wheel.ApplyTorque(value * m_Acceleration * m_MotorTorque);
                 wheel.ApplyTorque(value * m_CarStats.GetTorque());
                 float speedRatio = (Mathf.Abs(m_Rigidbody.linearVelocity.magnitude) / m_Rigidbody.maxLinearVelocity);
                 m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (-direction * (m_CarStats.GetAcceleration() * speedRatio)), ForceMode.Acceleration);
+                wheel.ApplyBrakeTorque(3000f);
+
+                // Only Consume Fuel when accelerating
+                //if (value > 0)
+                //    HandleFuelConsumption(value);
             }
             else
             {
                 wheel.ApplyTorque(value * m_CarStats.GetTorque());
                 m_Rigidbody.AddForce(m_Rigidbody.transform.forward * (m_CarStats.GetAcceleration() * 0.2f * value), ForceMode.Acceleration);
+                HandleFuelConsumption(value);
             }
+
+            if (Mathf.Abs(value) < 0.01f)
+                wheel.ApplyBrakeTorque(3000f);
+            else
+                wheel.ApplyBrakeTorque(0f);
         }
 
         /// <summary>
@@ -114,9 +130,9 @@ namespace Game.Vehicle
         private void HandleFuelConsumption(float value)
         {
             if (value == 0) return;
-            
+
             m_CurrentFuelTankVolume =
-                Mathf.Clamp(m_CurrentFuelTankVolume - m_CarStats.GetCurrentConsumption() * Time.fixedDeltaTime,
+                Mathf.Clamp(m_CurrentFuelTankVolume - m_CarStats.GetCurrentConsumption() * Time.fixedDeltaTime / 2f,
                     0f,
                     m_CarStats.GetFuelTank().m_Volume);
         }

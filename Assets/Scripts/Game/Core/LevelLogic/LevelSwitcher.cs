@@ -56,6 +56,7 @@ namespace Game.Core.LevelLogic
         [SerializeField] private Transform m_VehicleSpawnPoint;
         [SerializeField] private bool m_RespawnVehicle;
         [SerializeField] private bool m_NeutralizeVehicleVelocity;
+        [SerializeField] private bool m_RefillFuelTank = false;
         [SerializeField] private InputState m_CarControllerState;
         
         [Header("UI Handling - OnInteract")]
@@ -98,6 +99,7 @@ namespace Game.Core.LevelLogic
                     HandleVehicle();
                     HandleUI();
                     CallLevelSwitch();
+                    HandleFuelRefill();
                     break;
             
                 case SwitcherType.Scene:
@@ -110,6 +112,8 @@ namespace Game.Core.LevelLogic
         }
 
         protected virtual void CallLevelSwitch() => m_NextLevel.SwitchToLevel();
+        protected virtual void HandleFuelRefill()
+        { if (m_RefillFuelTank) GameManager.Instance.m_Player.GetComponent<PlayerController>().GetCarController().GetCar().RefillFuelTank(); }
 
         private void HandleVehicle()
         {

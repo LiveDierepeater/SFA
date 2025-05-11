@@ -10,12 +10,26 @@ public class Wheel : MonoBehaviour
     [SerializeField] private bool m_Steer;
     [SerializeField] private bool m_Power;
     
+    [Header("Debug")]
+    public float m_Torque_DEBUG;
+    public float m_BrakeTorque_DEBUG;
+    
     private WheelCollider m_WheelCollider;
 
     private void Awake() => m_WheelCollider = GetComponent<WheelCollider>();
 
-    public void ApplyTorque(float torque) => m_WheelCollider.motorTorque = torque;
+    public void ApplyTorque(float torque)
+    {
+        m_WheelCollider.motorTorque = torque;
+        m_Torque_DEBUG = torque;
+    }
+
     public void ApplySteerAngle(float angle) => m_WheelCollider.steerAngle = angle;
+    public void ApplyBrakeTorque(float torque)
+    {
+        m_WheelCollider.brakeTorque = torque;
+        m_BrakeTorque_DEBUG = torque;
+    }
 
     public void UpdateStiffnessValues(float forwardStiffness, float sidewaysStiffness)
     {

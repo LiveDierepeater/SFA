@@ -73,6 +73,8 @@ MonoBehaviour:
   m_VehicleSpawnPoint: {fileID: 0}
   m_RespawnVehicle: 1
   m_NeutralizeVehicleVelocity: 1
+  m_RefillFuelTank: 1
   m_CarControllerState: 2
   m_UIHandling: 0
   m_UIToProcess: 
+  m_ActorsToReset: []
