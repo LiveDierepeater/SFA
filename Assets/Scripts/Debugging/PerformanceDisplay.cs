@@ -21,7 +21,7 @@ public class PerformanceDisplay : MonoBehaviour
     {
         if (ap == null || !ap.Active)
         {
-            print("Adaptive Performance not available.");
+            //print("Adaptive Performance not available.");
             return;
         }
 

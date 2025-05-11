@@ -205,6 +205,9 @@ MonoBehaviour:
   m_GearActionReference: {fileID: -100700664745409970, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_CarController: {fileID: 0}
   m_CarInputEnabled: 0
+  m_PlayerInputType: 0
+  m_GasJoystick: {fileID: 0}
+  m_GearJoystick: {fileID: 0}
 --- !u!114 &8510967581152644189
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Vehicle.Stats;
@@ -17,6 +18,8 @@ namespace Game.Vehicle
         [Header("Components")]
         [SerializeField] private Transform m_CenterOfMass;
         [SerializeField] private CarStats m_CarStats;
+        [Header("Settings")]
+        [SerializeField] private float m_SpeedReduction = 10f;
     
         private List<Wheel> m_Wheels;
         private Rigidbody m_Rigidbody;
@@ -53,6 +56,16 @@ namespace Game.Vehicle
             UpdateRigidbodyMass();
             RefillFuelTank();
             UpdateWheelFrictionValues();
+        }
+
+        private void FixedUpdate() => HandleCarSlowDown();
+
+        private void HandleCarSlowDown()
+        {
+            if (!Physics.Raycast(m_CenterOfMass.position, -transform.up, out RaycastHit hit, 5f)) return;
+            if (!hit.transform.CompareTag("Ground")) return;
+            
+            m_Rigidbody.AddForce(-m_Rigidbody.linearVelocity.normalized * m_SpeedReduction, ForceMode.Acceleration);
         }
 
         private void Update() => UpdateDebugValues();
@@ -167,6 +180,13 @@ namespace Game.Vehicle
             DEBUG_CurrentAcceleration = m_CarStats.GetCurrentAcceleration();
             DEBUG_CurrentFuelTankVolume = m_CurrentFuelTankVolume;
             DEBUG_CurrentMass = m_CarStats.GetMass();
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            // Draw Ray from HandleCarSlowDown()
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(m_CenterOfMass.position, m_CenterOfMass.position + -transform.up * 5f);
         }
     }
 }
