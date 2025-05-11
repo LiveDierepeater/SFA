@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 7925146331668394079}
   - component: {fileID: 2527393568813880186}
   m_Layer: 0
-  m_Name: FallenTree
+  m_Name: FallenTree (Torque)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

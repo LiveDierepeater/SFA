@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Game.Core;
 using UnityEngine;
@@ -41,7 +42,10 @@ public class DamagedBridge : Obstacle
         if (!other.CompareTag("Player")) return;
 
         if (!IsAbleToMaster())
+        {
             CollapseBridge();
+            StartCoroutine(ExplodeDestruction(0.1f));
+        }
     }
 
     protected override bool IsAbleToMaster() =>
@@ -54,16 +58,26 @@ public class DamagedBridge : Obstacle
         RespawnBridge();
     }
 
-    private void CollapseBridge() { foreach (var bridgePart in m_BridgeParts) bridgePart.isKinematic = false; }
+    private void CollapseBridge()
+    {
+        foreach (var bridgePart in m_BridgeParts)
+        {
+            bridgePart.isKinematic = false;
+        }
+    }
+
+    private IEnumerator ExplodeDestruction(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        
+        foreach (var bridgePart in m_BridgeParts)
+            bridgePart.AddForce(new Vector3(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1)) * 50f,
+                ForceMode.Impulse);
+    }
 
     private void RespawnBridge()
     {
         foreach (var pair in m_BridgePartsTransforms) pair.Value.ApplyTo(pair.Key);
-        foreach (var bridgePart in m_BridgeParts)
-        {
-            bridgePart.linearVelocity = Vector3.zero;
-            bridgePart.angularVelocity = Vector3.zero;
-            bridgePart.isKinematic = true;
-        }
+        foreach (var bridgePart in m_BridgeParts) bridgePart.isKinematic = true;
     }
 }

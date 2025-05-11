@@ -1839,6 +1839,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 322711844}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!1001 &1345773912
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 849273215233218400, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_Name
+      value: BrokenBridge (Speed)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972819329002431606, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607958805420794999, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_NextLevel
+      value: 
+      objectReference: {fileID: 466791666}
+    - target: {fileID: 4607958805420794999, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
+      propertyPath: m_VehicleSpawnPoint
+      value: 
+      objectReference: {fileID: 169445304}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1f78a682cd525be46aadee20bbc41eff, type: 3}
 --- !u!1 &1374852184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3372,11 +3437,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 849273215233218400, guid: bc63aa9aeefcc71478fe30a54b6c232d, type: 3}
       propertyPath: m_Name
-      value: Bridge
+      value: DamagedBridge (Weight)
       objectReference: {fileID: 0}
     - target: {fileID: 1972819329002431606, guid: bc63aa9aeefcc71478fe30a54b6c232d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 1972819329002431606, guid: bc63aa9aeefcc71478fe30a54b6c232d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3384,7 +3449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972819329002431606, guid: bc63aa9aeefcc71478fe30a54b6c232d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1972819329002431606, guid: bc63aa9aeefcc71478fe30a54b6c232d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3688,3 +3753,4 @@ SceneRoots:
   - {fileID: 521110778}
   - {fileID: 1413162600}
   - {fileID: 3904417649159672313}
+  - {fileID: 1345773912}
