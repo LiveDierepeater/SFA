@@ -139,6 +139,7 @@ namespace Game.Vehicle
     
         public Rigidbody GetRigidbody() => m_Rigidbody;
         public CarStats GetCarStats() => m_CarStats;
+        public Wheel[] GetWheels() => m_Wheels.ToArray();
 
         public bool HasEnoughFuel() => m_CurrentFuelTankVolume > 0;
         public float GetCurrentFuelTankVolume() => m_CurrentFuelTankVolume;
