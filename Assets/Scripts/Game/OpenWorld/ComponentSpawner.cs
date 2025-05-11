@@ -1,6 +1,24 @@
 using System.Collections;
+using System.Collections.Generic;
 using Game.Core;
 using UnityEngine;
+
+public class ComponentSpawnerManager
+{
+    public static ComponentSpawnerManager Instance;
+    public ComponentSpawnerManager() => Instance ??= this;
+    public static bool IsInitialized => Instance != null;
+    
+    private readonly List<CarComponent> m_RegisteredComponents = new();
+    public void RegisterComponent(CarComponent component)
+    {
+        if (!m_RegisteredComponents.Contains(component))
+            m_RegisteredComponents.Add(component);
+        else
+            Debug.LogWarning($"Component {component} already registered!");
+    }
+    public List<CarComponent> GetRegisteredComponents() => m_RegisteredComponents;
+}
 
 [RequireComponent(typeof(SphereCollider))]
 public class ComponentSpawner : MonoBehaviour, IInteractable
@@ -17,6 +35,7 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(m_SpawnDelay);
+        if (!ComponentSpawnerManager.IsInitialized) ComponentSpawnerManager.Instance = new ComponentSpawnerManager();
         InitializeComponent();
     }
 
@@ -27,11 +46,18 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
             Debug.LogWarning($"Component {m_CarComponent} already in inventory!");
             Destroy(gameObject);
         }
+        else if (ComponentSpawnerManager.Instance.GetRegisteredComponents().Contains(m_CarComponent))
+        {
+            Debug.LogWarning($"Component {m_CarComponent} already registered!");
+            Destroy(gameObject);
+        }
         else
         {
             m_SpawnedCarComponent = Instantiate(m_CarComponentProxyPrefab, transform.position, Quaternion.identity, transform).GetComponent<CarComponentProxy>();
             m_SpawnedCarComponent.InitializeCarComponentProxy(m_CarComponent, null, true, true);
             GetComponent<SphereCollider>().radius = m_InteractionSphereRadius;
+            
+            ComponentSpawnerManager.Instance.RegisterComponent(m_CarComponent);
         }
     }
 
