@@ -29,6 +29,7 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
     [Header("Spawning")]
     [SerializeField] private GameObject m_CarComponentProxyPrefab;
     [SerializeField] private CarComponent m_CarComponent;
+    [SerializeField] private float m_ComponentScale = 3.0f;
 
     private CarComponentProxy m_SpawnedCarComponent;
 
@@ -54,6 +55,7 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
         else
         {
             m_SpawnedCarComponent = Instantiate(m_CarComponentProxyPrefab, transform.position, Quaternion.identity, transform).GetComponent<CarComponentProxy>();
+            m_SpawnedCarComponent.transform.localScale = Vector3.one * m_ComponentScale;
             m_SpawnedCarComponent.InitializeCarComponentProxy(m_CarComponent, null, true, true);
             GetComponent<SphereCollider>().radius = m_InteractionSphereRadius;
             
