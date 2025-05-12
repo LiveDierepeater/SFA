@@ -1685,6 +1685,14 @@ MonoBehaviour:
   m_Slot_Wheel_LB: {fileID: 6263983731267250127}
   m_Slot_Wheel_RB: {fileID: 2126270917545027037}
   m_CarComponentProxyPrefab: {fileID: 5398818388921346304, guid: 79017b38940882d47be216c01d801483, type: 3}
+  m_SpawnPointTransform: {fileID: 0}
+  m_Garage: {fileID: 0}
+  m_OnCarModification:
+  - {fileID: 8300000, guid: 582e9019ff5162a4e87fbd7428851d12, type: 3}
+  - {fileID: 8300000, guid: 09a8383b690f0d7438b8b155e6bcdb9f, type: 3}
+  - {fileID: 8300000, guid: e6adb949bd0836240880297ea5ae7f70, type: 3}
+  - {fileID: 8300000, guid: ed07a00edce76ad48b01f086dd86e150, type: 3}
+  m_OnCarIsReady: {fileID: 8300000, guid: 14aab22cd6028fb4191a40f85c2f613b, type: 3}
 --- !u!1 &8878817861675918645
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,3 +50,4 @@ MonoBehaviour:
   m_SpawnDelay: 0.1
   m_SpawnCount: 60
   m_SpawnRadius: 2
+  m_OnItemCollected: {fileID: 8300000, guid: 4e88f07eb6f81884da4f73ca19ce5f86, type: 3}

@@ -122,6 +122,8 @@ MonoBehaviour:
   m_WheelTransform: {fileID: 3334467544924601940}
   m_Steer: 0
   m_Power: 1
+  m_Torque_DEBUG: 0
+  m_BrakeTorque_DEBUG: 0
 --- !u!1 &5232132454176199561
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +242,8 @@ MonoBehaviour:
   m_WheelTransform: {fileID: 8578582574198169589}
   m_Steer: 0
   m_Power: 1
+  m_Torque_DEBUG: 0
+  m_BrakeTorque_DEBUG: 0
 --- !u!1 &6085438162609873009
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +331,8 @@ MonoBehaviour:
   m_WheelTransform: {fileID: 952557713653051999}
   m_Steer: 1
   m_Power: 0
+  m_Torque_DEBUG: 0
+  m_BrakeTorque_DEBUG: 0
 --- !u!1 &8415573759226545509
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +420,8 @@ MonoBehaviour:
   m_WheelTransform: {fileID: 8933649872637199465}
   m_Steer: 1
   m_Power: 0
+  m_Torque_DEBUG: 0
+  m_BrakeTorque_DEBUG: 0
 --- !u!1 &9050553515825463359
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,11 +501,12 @@ MonoBehaviour:
   m_CenterOfMass: {fileID: 5671183008578764112}
   m_CarStats:
     m_BaseStats: {fileID: 11400000, guid: 110047661e6d41543b912fe8beeee281, type: 2}
+  m_SpeedReduction: 10
+  m_OnFuel: {fileID: 8300000, guid: 05c930d0acab8d04bbe761bb0fbe31ca, type: 3}
+  m_OnFuelAlmostEmpty: {fileID: 8300000, guid: 81786cd770adf1e4f8717531d002fbad, type: 3}
   DebugMode: 1
   DEBUG_MaxSpeed: 0
   DEBUG_MotorTorque: 0
-  DEBUG_Acceleration: 0
-  DEBUG_MaxSteer: 0
   DEBUG_CurrentConsumption: 0
   DEBUG_CurrentAcceleration: 0
   DEBUG_CurrentSpeed: 0

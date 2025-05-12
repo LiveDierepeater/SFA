@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Game.Core;
 using Game.Core.LevelLogic;
 using Game.Vehicle.Stats;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class CarProxy : MonoBehaviour, IInteractable
 {
+    [Header("Car Component Slots")]
     [SerializeField] private Transform m_Slot_Bonnet;
     [SerializeField] private Transform m_Slot_Chassis;
     [SerializeField] private Transform m_Slot_Engine;
@@ -16,10 +18,16 @@ public class CarProxy : MonoBehaviour, IInteractable
     [SerializeField] private Transform m_Slot_Wheel_LB;
     [SerializeField] private Transform m_Slot_Wheel_RB;
     
+    [Header("Spawning")]
     [SerializeField] private GameObject m_CarComponentProxyPrefab;
     [SerializeField] private Transform m_SpawnPointTransform;
     
+    [Header("Internal")]
     [SerializeField] private Garage m_Garage;
+    
+    [Header("Audio")]
+    [SerializeField] private List<AudioClip> m_OnCarModification;
+    [SerializeField] private AudioClip m_OnCarIsReady;
 
     public void UpdateCarProxy()
     {
@@ -183,6 +191,12 @@ public class CarProxy : MonoBehaviour, IInteractable
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        
+        if (m_OnCarModification is not null && m_OnCarModification.Count > 0)
+            if (HasAllComponentsBuildIn())
+                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarModification[UnityEngine.Random.Range(0, m_OnCarModification.Count)]);
+            else if (m_OnCarIsReady is not null)
+                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarIsReady);
     }
 
     private void DestroyAllProxies()

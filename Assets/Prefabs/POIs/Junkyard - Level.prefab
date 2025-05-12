@@ -1462,6 +1462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TriggerType: 0
   m_SwitcherType: 0
+  m_AudioType: 0
   m_NextLevel: {fileID: 8270170484232445100}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -1471,6 +1472,8 @@ MonoBehaviour:
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 
+  m_OnLevelSwitch_Accepted: {fileID: 0}
+  m_OnLevelSwitch_Denied: {fileID: 0}
 --- !u!114 &8270170484232445100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,6 +1489,8 @@ MonoBehaviour:
   m_targetTransform: {fileID: 2003065615900410745}
   m_resetTransform: {fileID: 738724001826235544}
   LoadingDuration: 6
+  m_OnLevelLoadFirstTime: {fileID: 8300000, guid: 0055074a89968d94b88d7aaf0bb9b3c3, type: 3}
+  m_OnLevelLoad: []
   m_TrashSpawner: {fileID: 947412377543810127}
 --- !u!1 &636574267378928563
 GameObject:
@@ -4116,6 +4121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TriggerType: 0
   m_SwitcherType: 0
+  m_AudioType: 1
   m_NextLevel: {fileID: 7503046576296433085}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -4125,6 +4131,8 @@ MonoBehaviour:
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 
+  m_OnLevelSwitch_Accepted: {fileID: 8300000, guid: 7bc6986802a390345812392323cd213a, type: 3}
+  m_OnLevelSwitch_Denied: {fileID: 8300000, guid: dde3354f184150d4daf72dc7ca4792bc, type: 3}
   m_Garage: {fileID: 1370403345055921664}
 --- !u!1 &2460029324428361948
 GameObject:
@@ -7526,6 +7534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TriggerType: 0
   m_SwitcherType: 0
+  m_AudioType: 0
   m_NextLevel: {fileID: 7503046576296433085}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -7535,6 +7544,8 @@ MonoBehaviour:
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 
+  m_OnLevelSwitch_Accepted: {fileID: 0}
+  m_OnLevelSwitch_Denied: {fileID: 0}
 --- !u!1 &4291910234380436010
 GameObject:
   m_ObjectHideFlags: 0
@@ -9114,6 +9125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TriggerType: 0
   m_SwitcherType: 0
+  m_AudioType: 0
   m_NextLevel: {fileID: 0}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -9123,6 +9135,8 @@ MonoBehaviour:
   m_CarControllerState: 2
   m_UIHandling: 2
   m_UIToProcess: 01000000
+  m_OnLevelSwitch_Accepted: {fileID: 0}
+  m_OnLevelSwitch_Denied: {fileID: 0}
 --- !u!1 &5077847661451733913
 GameObject:
   m_ObjectHideFlags: 0
@@ -11671,6 +11685,9 @@ MonoBehaviour:
   m_targetTransform: {fileID: 738724001826235544}
   m_resetTransform: {fileID: 0}
   LoadingDuration: 1
+  m_OnLevelLoadFirstTime: {fileID: 8300000, guid: 1f6fdb7da9840d246ae42255476273a5, type: 3}
+  m_OnLevelLoad:
+  - {fileID: 8300000, guid: 1f6fdb7da9840d246ae42255476273a5, type: 3}
   m_VehicleSpawnPoint: {fileID: 0}
 --- !u!1 &6211341632789812260
 GameObject:
@@ -15875,6 +15892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TriggerType: 0
   m_SwitcherType: 0
+  m_AudioType: 0
   m_NextLevel: {fileID: 1370403345055921664}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -15884,6 +15902,8 @@ MonoBehaviour:
   m_CarControllerState: 0
   m_UIHandling: 0
   m_UIToProcess: 
+  m_OnLevelSwitch_Accepted: {fileID: 0}
+  m_OnLevelSwitch_Denied: {fileID: 0}
 --- !u!114 &1370403345055921664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15899,6 +15919,9 @@ MonoBehaviour:
   m_targetTransform: {fileID: 1592383939012025524}
   m_resetTransform: {fileID: 738724001826235544}
   LoadingDuration: 1
+  m_OnLevelLoadFirstTime: {fileID: 8300000, guid: 1b8a7cd3c41cb0748b428385aefed67d, type: 3}
+  m_OnLevelLoad:
+  - {fileID: 8300000, guid: 1b8a7cd3c41cb0748b428385aefed67d, type: 3}
   m_CarProxy: {fileID: 1638897044062508250}
   m_CarComponentsSpawnPoint: {fileID: 7230882875724564404}
   m_CarComponentProxyPrefab: {fileID: 5398818388921346304, guid: 79017b38940882d47be216c01d801483, type: 3}

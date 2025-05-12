@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36065925a2a029a408cb7097e392e364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_OnObstacleNPCInfo: {fileID: 8300000, guid: 12fa3bd10ad63a14bac508edcf5a8a3a, type: 3}
   m_Collider: {fileID: 1687888947176590837}
   m_BrakeForce: 50
   m_MinTractionNecessary: 3

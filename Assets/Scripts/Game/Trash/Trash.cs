@@ -16,6 +16,7 @@ public class Trash : MonoBehaviour, ITrashComponent
     private Collider m_Collider;
     private MeshFilter m_MeshFilter;
     private MeshRenderer m_MeshRenderer;
+    private TrashSpawner m_TrashSpawner;
     
     private Vector3 m_LastPosition;
 
@@ -28,9 +29,10 @@ public class Trash : MonoBehaviour, ITrashComponent
         m_MeshRenderer = GetComponentInChildren<MeshRenderer>();
         m_Rigidbody.mass = 20f;
     }
-    public void Initialize(CarComponent carComponent = null, Material material = default(Material))
+    public void Initialize(CarComponent carComponent = null, Material material = default(Material), TrashSpawner spawner = null)
     {
         m_CarComponent = carComponent;
+        m_TrashSpawner = spawner;
         
         if (m_CarComponent is null) return;
         ComponentSpawnerManager.Instance.RegisterComponent(m_CarComponent);
@@ -75,7 +77,17 @@ public class Trash : MonoBehaviour, ITrashComponent
     { 
         if (!GameManager.Instance.m_Player.GetComponent<Inventory>().IsComponentInInventory(m_CarComponent))
             GameManager.Instance.m_Player.GetComponent<Inventory>().AddCarComponentToInventory(m_CarComponent);
+        HandleAudio();
         Destroy(gameObject);
+    }
+    private void HandleAudio()
+    {
+        if (m_TrashSpawner is null) return;
+        
+        var clip = m_TrashSpawner.GetComponent<TrashSpawner>().GetOnItemCollectedAudioClip();
+        if (clip is null) return;
+        
+        NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnItemCollected(clip);
     }
 
     private void UpdatePosition()

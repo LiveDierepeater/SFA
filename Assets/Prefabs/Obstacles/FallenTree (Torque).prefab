@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc3d9f650748f34c8c94d666a05852a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_OnObstacleNPCInfo: {fileID: 8300000, guid: ca18962c58dd83a478893d1d2e960dff, type: 3}
   m_Collider: {fileID: 6490035391593869492}
   m_TimeToMasterObstacle: 0.5
   m_TorqueRequired: 2

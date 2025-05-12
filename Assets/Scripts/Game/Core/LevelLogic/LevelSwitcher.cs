@@ -39,6 +39,11 @@ namespace Game.Core.LevelLogic
         FuelStationUI,
         RacingUI
     }
+    public enum AudioType
+    {
+        None,
+        UseAudio
+    }
     
     public class LevelSwitcher : MonoBehaviour, IInteractable
     {
@@ -46,6 +51,7 @@ namespace Game.Core.LevelLogic
     
         [SerializeField] protected TriggerType m_TriggerType;
         [SerializeField] protected SwitcherType m_SwitcherType;
+        [SerializeField] protected AudioType m_AudioType;
     
         [ConditionalHide("m_SwitcherType", (int)SwitcherType.Level)]
         [SerializeField] private Level m_NextLevel;
@@ -63,6 +69,12 @@ namespace Game.Core.LevelLogic
         [SerializeField] private UIHandling m_UIHandling;
         [SerializeField] private List<UITypes> m_UIToProcess;
         
+        [Header("Audio Clips")]
+        [ConditionalHide("m_AudioType", (int)AudioType.UseAudio)]
+        [SerializeField] private AudioClip m_OnLevelSwitch_Accepted;
+        [ConditionalHide("m_AudioType", (int)AudioType.UseAudio)]
+        [SerializeField] private AudioClip m_OnLevelSwitch_Denied;
+        
         private void Start() => InitializeLevelSwitchingLogic();
         private void InitializeLevelSwitchingLogic()
         {
@@ -73,7 +85,7 @@ namespace Game.Core.LevelLogic
         public void OnInteract()
         {
             if (!m_interactable) return;
-
+            
             switch (m_TriggerType)
             {
                 case TriggerType.Mouse:
@@ -221,6 +233,25 @@ namespace Game.Core.LevelLogic
                 
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+        }
+        
+        protected virtual void HandleAudio(NPCType npcType, NPC.ReactionType reactionType)
+        {
+            if (m_AudioType != AudioType.UseAudio) return;
+
+            switch (reactionType)
+            {
+                case NPC.ReactionType.Accepted when m_OnLevelSwitch_Accepted is not null:
+                    NPCManager.GetInstance().GetNPC(npcType).ReactOnLevelSwitch(m_OnLevelSwitch_Accepted);
+                    break;
+                
+                case NPC.ReactionType.Denied when m_OnLevelSwitch_Denied is not null:
+                    NPCManager.GetInstance().GetNPC(npcType).ReactOnLevelSwitch(m_OnLevelSwitch_Denied);
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(reactionType), reactionType, null);
             }
         }
         

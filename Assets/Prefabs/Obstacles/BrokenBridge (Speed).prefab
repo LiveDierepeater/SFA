@@ -952,6 +952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596dda0336525eb4a90ac0181786dd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_OnObstacleNPCInfo: {fileID: 8300000, guid: 0404437220750694ca0cbf1b309b9745, type: 3}
   m_BridgeParts:
   - {fileID: 323411052384378799}
   - {fileID: 3551785740389814362}

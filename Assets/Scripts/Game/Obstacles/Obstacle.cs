@@ -10,7 +10,10 @@ public enum ObstacleType
 
 public abstract class Obstacle : LevelActor, ILevelActor
 {
-    protected virtual void TriggerEnter(Collider other) {}
+    [Header("Audio")]
+    [SerializeField] private AudioClip m_OnObstacleNPCInfo;
+
+    protected virtual void TriggerEnter(Collider other) => HandleAudio();
     protected virtual void TriggerStay(Collider other) {}
     protected virtual void TriggerExit(Collider other) {}
 
@@ -22,4 +25,7 @@ public abstract class Obstacle : LevelActor, ILevelActor
     public override void OnResetActor() => ResetObstacle();
 
     protected virtual void ResetObstacle() {}
+    
+    protected virtual void HandleAudio()
+    { if (!IsAbleToMaster()) NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnObstacle(m_OnObstacleNPCInfo); }
 }

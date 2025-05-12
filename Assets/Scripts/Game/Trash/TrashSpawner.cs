@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +12,9 @@ public class TrashSpawner : MonoBehaviour
     [SerializeField] private float m_SpawnDelay = 0.3f;
     [SerializeField] private int m_SpawnCount = 15;
     [SerializeField] private float m_SpawnRadius = 1.0f;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioClip m_OnItemCollected;
     
     private bool m_SpawnerIsReady = false;
 
@@ -69,6 +71,7 @@ public class TrashSpawner : MonoBehaviour
 
     private Vector3 GetRandomPointInSphere() => Random.insideUnitSphere * m_SpawnRadius + transform.position;
     private static Quaternion GetRandomRotation() => Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
+    public AudioClip GetOnItemCollectedAudioClip() => m_OnItemCollected;
 
     private void OnDrawGizmosSelected()
     {

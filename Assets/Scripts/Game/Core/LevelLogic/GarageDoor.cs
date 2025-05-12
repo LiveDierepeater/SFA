@@ -17,10 +17,19 @@ public class GarageDoor : LevelSwitcher
 
         if (m_Garage.GetCarProxy().HasAllComponentsBuildIn())
         {
-            GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateCarStats(m_Garage.GetCarProxy().GetInstalledCarComponents());
-            GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().RefillFuelTank();
-            GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateWheelFrictionValues();
+            HandleAudio(NPCType.Grandpa, NPC.ReactionType.Accepted);
+            UpdateCarStats();
             base.CallLevelSwitch();
         }
+        else
+            HandleAudio(NPCType.Grandpa, NPC.ReactionType.Denied);
+            
+    }
+
+    private void UpdateCarStats()
+    {
+        GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateCarStats(m_Garage.GetCarProxy().GetInstalledCarComponents());
+        GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().RefillFuelTank();
+        GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateWheelFrictionValues();
     }
 }

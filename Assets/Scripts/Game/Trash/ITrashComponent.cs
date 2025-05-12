@@ -6,6 +6,6 @@ public interface ITrashComponent : IInteractable
 
     public new void OnInteract();
     
-    public void Initialize(CarComponent carComponent = null, Material material = null);
+    public void Initialize(CarComponent carComponent = null, Material material = null, TrashSpawner spawner = null);
     public CarComponent GetCarComponent();
 }

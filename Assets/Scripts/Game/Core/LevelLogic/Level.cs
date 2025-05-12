@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Game.Core.Interfaces;
 using UnityEngine;
 
@@ -10,10 +11,16 @@ namespace Game.Core.LevelLogic
         [SerializeField] protected Transform m_resetTransform;
         
         [SerializeField] private float LoadingDuration = 1f;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioClip m_OnLevelLoadFirstTime;
+        [SerializeField] private List<AudioClip> m_OnLevelLoad;
 
         public delegate void LevelSwitching();
         public LevelSwitching OnLevelSwitchingAccepted;
         public LevelSwitching OnLevelSwitchingFinished;
+        
+        private int m_InteractionsCount;
 
         public virtual void SwitchToLevel()
         {
@@ -32,9 +39,7 @@ namespace Game.Core.LevelLogic
         public virtual IEnumerator LoadLevel(Transform targetPlayerTransform)
         {
             yield return new WaitForSeconds(LoadingDuration);
-            
-            // TODO: Implement level loading logic
-            
+            HandleNPCVoiceLines();
             PlayerTransition(targetPlayerTransform);
             CameraFade(false);
             OnLevelSwitchingFinished?.Invoke();
@@ -50,6 +55,21 @@ namespace Game.Core.LevelLogic
         {
             if (fadeIn) UIManager.Instance.FadeToBlack();
             else UIManager.Instance.FadeOut();
+        }
+
+        protected virtual void HandleNPCVoiceLines()
+        {
+            ++m_InteractionsCount;
+            if (m_InteractionsCount == 1)
+            {
+                if (m_OnLevelLoadFirstTime is not null)
+                    NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnLevelLoadFirstTime(m_OnLevelLoadFirstTime);
+            }
+            else
+            {
+                if (m_OnLevelLoad is not null && m_OnLevelLoad.Count > 0)
+                    NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnLevelLoad(m_OnLevelLoad[Random.Range(0, m_OnLevelLoad.Count)]);
+            }
         }
     }
 }

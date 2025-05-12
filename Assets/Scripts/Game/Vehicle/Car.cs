@@ -20,11 +20,16 @@ namespace Game.Vehicle
         [SerializeField] private CarStats m_CarStats;
         [Header("Settings")]
         [SerializeField] private float m_SpeedReduction = 10f;
+        [Header("Audio")]
+        [SerializeField] private AudioClip m_OnFuel;
+        [SerializeField] private AudioClip m_OnFuelAlmostEmpty;
     
         private List<Wheel> m_Wheels;
         private Rigidbody m_Rigidbody;
         
         private float m_CurrentFuelTankVolume;
+        private bool m_LowFuelWarning;
+        private bool m_OutOfFuelWarning;
 
         #region Debug
 
@@ -148,6 +153,22 @@ namespace Game.Vehicle
                 Mathf.Clamp(m_CurrentFuelTankVolume - m_CarStats.GetCurrentConsumption() * Time.fixedDeltaTime / 2f,
                     0f,
                     m_CarStats.GetFuelTank().m_Volume);
+            
+            if (m_CurrentFuelTankVolume <= m_CarStats.GetFuelTank().m_Volume * 0.2f && !m_LowFuelWarning)
+            {
+                m_LowFuelWarning = true;
+                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnFuelAlmostEmpty);
+            }
+            else if (m_CurrentFuelTankVolume <= 0f && !m_OutOfFuelWarning)
+            {
+                m_OutOfFuelWarning = true;
+                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnFuelAlmostEmpty);
+            }
+            else if (m_CurrentFuelTankVolume > m_CarStats.GetFuelTank().m_Volume * 0.2f && m_LowFuelWarning)
+            {
+                m_LowFuelWarning = false;
+                m_OutOfFuelWarning = true;
+            }
         }
     
         public Rigidbody GetRigidbody() => m_Rigidbody;

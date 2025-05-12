@@ -30,6 +30,8 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
     [SerializeField] private GameObject m_CarComponentProxyPrefab;
     [SerializeField] private CarComponent m_CarComponent;
     [SerializeField] private float m_ComponentScale = 3.0f;
+    [Header("Audio")]
+    [SerializeField] private AudioClip m_OnItemCollected;
 
     private CarComponentProxy m_SpawnedCarComponent;
 
@@ -66,8 +68,12 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         GameManager.Instance.m_Player.GetComponent<Inventory>().AddCarComponentToInventory(m_CarComponent);
+        HandleNPCVoiceLines();
         Destroy(gameObject);
     }
+    
+    private void HandleNPCVoiceLines()
+    { if (m_OnItemCollected is not null) NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnItemCollected(m_OnItemCollected); }
 
     public void OnDrawGizmosSelected()
     {

@@ -961,7 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d31a781dac58c243b6de482d716e4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BridgePrefab: {fileID: 849273215233218400}
+  m_OnObstacleNPCInfo: {fileID: 8300000, guid: 167815d185ca7ae4c8796b13597aea5a, type: 3}
   m_BridgeParts:
   - {fileID: 2512378180700646017}
   - {fileID: 323411052384378799}

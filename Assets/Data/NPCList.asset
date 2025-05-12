@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e99d50e8b019634d9bcf80dee58da63, type: 3}
   m_Name: NPCList
   m_EditorClassIdentifier: 
-  m_Grandpa_Prefab: {fileID: 0}
-  m_Racer_Prefab: {fileID: 0}
-  m_Attendant_Prefab: {fileID: 0}
+  m_Grandpa_Prefab: {fileID: 919132149155446097, guid: d4bc7c42cd8f06449b51ff5b2e413bd9, type: 3}
+  m_Racer_Prefab: {fileID: 919132149155446097, guid: d4bc7c42cd8f06449b51ff5b2e413bd9, type: 3}
+  m_Attendant_Prefab: {fileID: 919132149155446097, guid: d4bc7c42cd8f06449b51ff5b2e413bd9, type: 3}
