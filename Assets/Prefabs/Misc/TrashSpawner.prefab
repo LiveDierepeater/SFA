@@ -47,6 +47,6 @@ MonoBehaviour:
   m_AllComponentsList: {fileID: 11400000, guid: fcdf3618bed016441bc875560570d2f1, type: 2}
   m_TrashPrefab: {fileID: 1866289114143013438, guid: affee47e4245ae645a94276fe6cf3413, type: 3}
   m_ComponentMaterial: {fileID: 2100000, guid: f6d04e7595c461a47986f49a6bafd900, type: 2}
-  m_SpawnDelay: 0.15
-  m_SpawnCount: 30
+  m_SpawnDelay: 0.1
+  m_SpawnCount: 60
   m_SpawnRadius: 2

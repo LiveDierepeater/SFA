@@ -28,7 +28,7 @@ public class Trash : MonoBehaviour, ITrashComponent
         m_MeshRenderer = GetComponentInChildren<MeshRenderer>();
         m_Rigidbody.mass = 20f;
     }
-    public void Initialize(CarComponent carComponent = null, Material material = null)
+    public void Initialize(CarComponent carComponent = null, Material material = default(Material))
     {
         m_CarComponent = carComponent;
         
@@ -38,6 +38,7 @@ public class Trash : MonoBehaviour, ITrashComponent
         //m_MeshFilter.sharedMesh = m_CarComponent.m_Collision;
     }
 
+    public CarComponent GetCarComponent() => m_CarComponent;
     public TrashState GetTrashState() => m_TrashState;
     private void SetTrashState(TrashState state)
     {
