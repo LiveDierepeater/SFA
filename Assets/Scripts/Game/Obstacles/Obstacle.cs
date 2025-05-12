@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum ObstacleType
+{
+    BrokenBridge,
+    DamagedBridge,
+    FallenTree,
+    MuddyRoad,
+}
+
 public abstract class Obstacle : LevelActor, ILevelActor
 {
     protected virtual void TriggerEnter(Collider other) {}
