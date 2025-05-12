@@ -23,4 +23,4 @@ MonoBehaviour:
   m_Acceleration: 4
   m_MaxSteer: 20
   m_BaseMass: 50
-  m_BaseConsumption: 0.1
+  m_BaseConsumption: 0.03
