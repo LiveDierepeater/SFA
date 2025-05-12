@@ -44,6 +44,9 @@ namespace Game.Player
         {
             m_PrimaryActionReference.action.performed += HandlePrimaryAction;
             m_PrimaryActionReference.action.canceled += HandlePrimaryActionReleased;
+            m_PrimaryActionReference.action.Enable();
+            m_GasActionReference.action.Enable();
+            m_GearActionReference.action.Enable();
         }
 
         private void FixedUpdate()
