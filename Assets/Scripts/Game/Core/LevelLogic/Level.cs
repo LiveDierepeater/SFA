@@ -10,7 +10,7 @@ namespace Game.Core.LevelLogic
         [SerializeField] protected Transform m_targetTransform;
         [SerializeField] protected Transform m_resetTransform;
         
-        [SerializeField] private float LoadingDuration = 1f;
+        [SerializeField] private float LoadingDuration;
         
         [Header("Audio")]
         [SerializeField] private AudioClip m_OnLevelLoadFirstTime;
@@ -45,13 +45,13 @@ namespace Game.Core.LevelLogic
             OnLevelSwitchingFinished?.Invoke();
         }
 
-        public void PlayerTransition(Transform targetPlayerTransform)
+        public virtual void PlayerTransition(Transform targetPlayerTransform)
         {
             GameManager.Instance.m_Player.LevelTransition(targetPlayerTransform);
             OnLevelSwitchingFinished?.Invoke();
         }
 
-        public void CameraFade(bool fadeIn)
+        public virtual void CameraFade(bool fadeIn)
         {
             if (fadeIn) UIManager.Instance.FadeToBlack();
             else UIManager.Instance.FadeOut();
@@ -68,7 +68,10 @@ namespace Game.Core.LevelLogic
             else
             {
                 if (m_OnLevelLoad is not null && m_OnLevelLoad.Count > 0)
-                    NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnLevelLoad(m_OnLevelLoad[Random.Range(0, m_OnLevelLoad.Count)]);
+                {
+                    if (Random.Range(0, 2) == 0)
+                        NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnLevelLoad(m_OnLevelLoad[Random.Range(0, m_OnLevelLoad.Count)]);
+                }
             }
         }
     }

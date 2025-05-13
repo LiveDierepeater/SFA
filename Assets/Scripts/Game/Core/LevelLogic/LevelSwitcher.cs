@@ -144,7 +144,7 @@ namespace Game.Core.LevelLogic
             if (car is null) return;
             
             car.transform.position = m_VehicleSpawnPoint.position;
-            car.transform.rotation = m_VehicleSpawnPoint.rotation;
+            //car.transform.rotation = m_VehicleSpawnPoint.rotation;
         }
         private void HandleVehicleVelocityNeutralization(Car car)
         {

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-1)]
 public class TickSystem : MonoBehaviour
 {
     public delegate void TickBeginDelegate();

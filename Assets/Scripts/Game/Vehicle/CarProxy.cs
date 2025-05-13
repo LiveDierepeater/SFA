@@ -4,6 +4,7 @@ using Game.Core;
 using Game.Core.LevelLogic;
 using Game.Vehicle.Stats;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CarProxy : MonoBehaviour, IInteractable
 {
@@ -196,7 +197,8 @@ public class CarProxy : MonoBehaviour, IInteractable
             if (HasAllComponentsBuildIn())
                 NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarIsReady);
             else if (m_OnCarIsReady is not null)
-                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarModification[UnityEngine.Random.Range(0, m_OnCarModification.Count)]);
+                if (Random.Range(0, 2) == 0)
+                    NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarModification[Random.Range(0, m_OnCarModification.Count)]);
     }
 
     private void DestroyAllProxies()

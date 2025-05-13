@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5058109324155033782}
   - component: {fileID: 7005410210925412875}
   - component: {fileID: 3342701863361420144}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MapTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,12 +48,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TriggerType: 1
   m_SwitcherType: 0
+  m_AudioType: 0
   m_NextLevel: {fileID: 0}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 1693220416497603339}
-  m_RespawnVehicle: 1
+  m_RespawnVehicle: 0
   m_NeutralizeVehicleVelocity: 0
+  m_RefillFuelTank: 0
   m_CarControllerState: 0
+  m_UIHandling: 0
+  m_UIToProcess: 
+  m_OnLevelSwitch_Accepted: {fileID: 0}
+  m_OnLevelSwitch_Denied: {fileID: 0}
 --- !u!65 &3342701863361420144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73,7 +79,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 5, z: 1}
+  m_Size: {x: 118, y: 5, z: 98}
   m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!1 &6163287025234874745
 GameObject:
@@ -84,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1693220416497603339}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 6163287025234874745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 25}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

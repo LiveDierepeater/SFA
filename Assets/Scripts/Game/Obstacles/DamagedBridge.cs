@@ -73,7 +73,6 @@ public class DamagedBridge : Obstacle
 
     private void RespawnBridge()
     {
-        print("Respawning bridge");
         foreach (var pair in m_BridgePartsTransforms) pair.Value.ApplyTo(pair.Key);
         foreach (var bridgePart in m_BridgeParts) bridgePart.isKinematic = true;
     }
