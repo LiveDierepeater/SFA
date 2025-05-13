@@ -65,7 +65,7 @@ public abstract class NPC : MonoBehaviour, INPC
     {
         if (audioClip is null) return;
         
-        m_AudioSource.time = 0f;
+        //m_AudioSource.time = 0f;
         m_AudioSource.clip = audioClip;
         m_AudioSource.Play();
     }
