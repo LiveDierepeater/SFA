@@ -1464,6 +1464,7 @@ MonoBehaviour:
   m_SwitcherType: 0
   m_AudioType: 0
   m_DisableCarCollision: 0
+  m_ActivateCarCollision: 0
   m_NextLevel: {fileID: 8270170484232445100}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -4124,6 +4125,7 @@ MonoBehaviour:
   m_SwitcherType: 0
   m_AudioType: 1
   m_DisableCarCollision: 0
+  m_ActivateCarCollision: 0
   m_NextLevel: {fileID: 7503046576296433085}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -7538,6 +7540,7 @@ MonoBehaviour:
   m_SwitcherType: 0
   m_AudioType: 0
   m_DisableCarCollision: 0
+  m_ActivateCarCollision: 0
   m_NextLevel: {fileID: 7503046576296433085}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -9130,6 +9133,7 @@ MonoBehaviour:
   m_SwitcherType: 0
   m_AudioType: 0
   m_DisableCarCollision: 0
+  m_ActivateCarCollision: 1
   m_NextLevel: {fileID: 0}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -15900,6 +15904,7 @@ MonoBehaviour:
   m_SwitcherType: 0
   m_AudioType: 0
   m_DisableCarCollision: 0
+  m_ActivateCarCollision: 0
   m_NextLevel: {fileID: 1370403345055921664}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}

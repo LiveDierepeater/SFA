@@ -53,6 +53,7 @@ namespace Game.Core.LevelLogic
         [SerializeField] protected SwitcherType m_SwitcherType;
         [SerializeField] protected AudioType m_AudioType;
         [SerializeField] protected bool m_DisableCarCollision;
+        [SerializeField] protected bool m_ActivateCarCollision;
     
         [ConditionalHide("m_SwitcherType", (int)SwitcherType.Level)]
         [SerializeField] private Level m_NextLevel;
@@ -136,7 +137,7 @@ namespace Game.Core.LevelLogic
                 Car car = GameManager.Instance.m_Player.GetComponent<PlayerController>().GetCarController().GetCar();
                 car.gameObject.SetActive(false);
             }
-            else
+            if (m_ActivateCarCollision)
             {
                 Car car = GameManager.Instance.m_Player.GetComponent<PlayerController>().GetCarController().GetCar();
                 car.gameObject.SetActive(true);
