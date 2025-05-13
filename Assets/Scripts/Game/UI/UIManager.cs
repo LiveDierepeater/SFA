@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Animator m_Fader;
     [SerializeField] private Transform m_OpenWorldUI;
+    [SerializeField] private Transform m_LoadingScreenUI;
     
     private static readonly int FadeInput = Animator.StringToHash("FadeInput");
     private static readonly int FadeDuration = Animator.StringToHash("FadeDuration");
@@ -71,10 +72,12 @@ public class UIManager : MonoBehaviour
     {
         m_Fader.SetInteger(FadeInput, 1);
         m_Fader.GetComponent<Image>().raycastTarget = true;
+        m_LoadingScreenUI.gameObject.SetActive(true);
     }
     public void FadeOut()
     {
         m_Fader.SetInteger(FadeInput, -1);
+        m_LoadingScreenUI.gameObject.SetActive(false);
         StartCoroutine(nameof(DisableFaderRaycastTargetAfterTime));
     }
 

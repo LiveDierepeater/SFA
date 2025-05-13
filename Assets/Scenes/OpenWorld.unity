@@ -1273,6 +1273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Fader: {fileID: 656432588}
   m_OpenWorldUI: {fileID: 1703160787}
+  m_LoadingScreenUI: {fileID: 1036552903}
 --- !u!1001 &651325631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2289,6 +2290,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 738724001826235544, guid: d4d28ec81a668ce42a405be42689f794, type: 3}
   m_PrefabInstance: {fileID: 749055564886196143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1036552903 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4665018932509967680, guid: 0f5039908a5a3f94b9c60e8de572e885, type: 3}
+  m_PrefabInstance: {fileID: 3717627085828558264}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1057882478
 PrefabInstance:
@@ -5232,7 +5238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 738138060238623622, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0000052452087
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 738138060238623622, guid: 41fac56ca45e85342a114804bb64c42e, type: 3}
       propertyPath: m_LocalRotation.w
