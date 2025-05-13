@@ -68,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TriggerType: 1
   m_SwitcherType: 0
+  m_AudioType: 0
   m_NextLevel: {fileID: 0}
   m_NextSceneName: 
   m_VehicleSpawnPoint: {fileID: 0}
@@ -77,4 +78,7 @@ MonoBehaviour:
   m_CarControllerState: 2
   m_UIHandling: 0
   m_UIToProcess: 
-  m_ActorsToReset: []
+  m_OnLevelSwitch_Accepted: {fileID: 0}
+  m_OnLevelSwitch_Denied: {fileID: 0}
+  m_ActorsToReset:
+  - {fileID: 0}

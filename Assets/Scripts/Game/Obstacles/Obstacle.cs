@@ -13,7 +13,8 @@ public abstract class Obstacle : LevelActor, ILevelActor
     [Header("Audio")]
     [SerializeField] private AudioClip m_OnObstacleNPCInfo;
 
-    protected virtual void TriggerEnter(Collider other) => HandleAudio();
+    protected virtual void TriggerEnter(Collider other) {}
+
     protected virtual void TriggerStay(Collider other) {}
     protected virtual void TriggerExit(Collider other) {}
 

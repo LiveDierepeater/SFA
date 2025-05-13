@@ -925,7 +925,6 @@ Transform:
   m_Children:
   - {fileID: 4129898060024014201}
   - {fileID: 3686563046263545655}
-  - {fileID: 6440259690105914088}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7296994232453890286
@@ -947,8 +946,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 3, z: 5.5}
-  m_Center: {x: 0, y: 3, z: -10}
+  m_Size: {x: 6, y: 3, z: 12}
+  m_Center: {x: 0, y: 2, z: -10}
 --- !u!114 &7295479940207674878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d31a781dac58c243b6de482d716e4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnObstacleNPCInfo: {fileID: 8300000, guid: 167815d185ca7ae4c8796b13597aea5a, type: 3}
+  m_OnObstacleNPCInfo: {fileID: 8300000, guid: 0404437220750694ca0cbf1b309b9745, type: 3}
   m_BridgeParts:
   - {fileID: 2512378180700646017}
   - {fileID: 323411052384378799}
@@ -9258,81 +9257,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &7834148787160293495
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1972819329002431606}
-    m_Modifications:
-    - target: {fileID: 2730906922830557836, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_Size.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2730906922830557836, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_Size.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001819245405684736, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_ActorsToReset.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001819245405684736, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: 'm_ActorsToReset.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7295479940207674878}
-    - target: {fileID: 8173748678643921426, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-      propertyPath: m_Name
-      value: DeathZone
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
---- !u!4 &6440259690105914088 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3879880492697838239, guid: bb3c53559ff2c13419165e3e087d3e9e, type: 3}
-  m_PrefabInstance: {fileID: 7834148787160293495}
-  m_PrefabAsset: {fileID: 0}

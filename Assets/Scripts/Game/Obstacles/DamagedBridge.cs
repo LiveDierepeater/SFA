@@ -34,15 +34,16 @@ public class DamagedBridge : Obstacle
     
     private readonly Dictionary<Transform, TransformData> m_BridgePartsTransforms = new();
 
-    private void Start()
+    private void Awake()
     { foreach (var bridgePart in m_BridgeParts) m_BridgePartsTransforms[bridgePart.transform] = new TransformData(bridgePart.transform); }
 
     protected override void TriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
+        
         if (!IsAbleToMaster())
         {
+            HandleAudio();
             CollapseBridge();
             StartCoroutine(ExplodeDestruction(0.1f));
         }
@@ -59,24 +60,20 @@ public class DamagedBridge : Obstacle
     }
 
     private void CollapseBridge()
-    {
-        foreach (var bridgePart in m_BridgeParts)
-        {
-            bridgePart.isKinematic = false;
-        }
-    }
+    { foreach (var bridgePart in m_BridgeParts) bridgePart.isKinematic = false; }
 
     private IEnumerator ExplodeDestruction(float timeToWait)
     {
         yield return new WaitForSeconds(timeToWait);
         
         foreach (var bridgePart in m_BridgeParts)
-            bridgePart.AddForce(new Vector3(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1)) * 50f,
+            bridgePart.AddForce(new Vector3(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1)) * 200f,
                 ForceMode.Impulse);
     }
 
     private void RespawnBridge()
     {
+        print("Respawning bridge");
         foreach (var pair in m_BridgePartsTransforms) pair.Value.ApplyTo(pair.Key);
         foreach (var bridgePart in m_BridgeParts) bridgePart.isKinematic = true;
     }

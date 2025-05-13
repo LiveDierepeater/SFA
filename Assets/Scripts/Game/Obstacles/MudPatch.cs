@@ -20,12 +20,15 @@ public class MudPatch : Obstacle
 
     protected override void TriggerEnter(Collider other)
     {
-        base.TriggerEnter(other);
         if (!other.CompareTag("Player")) return;
         
         m_Car = GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar();
 
-        if (!IsAbleToMaster()) return;
+        if (!IsAbleToMaster())
+        {
+            HandleAudio();
+            return;
+        }
 
         m_Collider.enabled = false;
     }

@@ -28,11 +28,18 @@ public class BrokenBridge : Obstacle
     
     [Header("Components")]
     [SerializeField] private List<Rigidbody> m_BridgeParts = new();
+    [SerializeField] private float m_MinSpeedRequired = 6f;
     
     private readonly Dictionary<Transform, TransformData> m_BridgePartsTransforms = new();
 
     private void Start()
     { foreach (var bridgePart in m_BridgeParts) m_BridgePartsTransforms[bridgePart.transform] = new TransformData(bridgePart.transform); }
+
+    protected override void TriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        if (!IsAbleToMaster()) HandleAudio();
+    }
 
     protected override void ResetObstacle()
     {
@@ -48,4 +55,8 @@ public class BrokenBridge : Obstacle
         foreach (var bridgePart in m_BridgeParts)
             bridgePart.isKinematic = true;
     }
+
+    protected override bool IsAbleToMaster() =>
+        GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats()
+            .GetMaxSpeed() >= m_MinSpeedRequired;
 }

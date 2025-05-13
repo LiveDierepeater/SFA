@@ -20,7 +20,8 @@ public sealed class FallenTree : Obstacle
 
     protected override void TriggerEnter(Collider other)
     {
-        base.TriggerEnter(other);
+        if (!IsAbleToMaster())
+            HandleAudio();
         m_IsPlayerInside = true;
     }
 
