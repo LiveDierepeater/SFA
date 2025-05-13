@@ -63,6 +63,8 @@ public class UIManager : MonoBehaviour
         ui.gameObject.SetActive(true);
     }
     
+    public bool IsOpenWorldUIActive() => m_OpenWorldUI != null && m_OpenWorldUI.gameObject.activeSelf;
+
 #region Fader
 
     public void FadeToBlack()

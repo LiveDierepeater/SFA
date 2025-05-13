@@ -15,6 +15,8 @@ namespace Game.Player
         private Vector3 m_SmoothCameraPosition;
         private Quaternion m_SmoothCameraRotation;
         private float m_LastTimeStamp;
+
+        private bool m_IsInTransition;
         
         private void Awake()
         {
@@ -32,27 +34,36 @@ namespace Game.Player
             {
                 transform.position = targetTransform.position;
                 transform.rotation = targetTransform.rotation;
-                TickManager.Instance.TickSystem.OnTick -= UpdateSmoothCameraPosition;
+                m_Camera.transform.localPosition = Vector3.zero;
+                m_Camera.transform.localRotation = Quaternion.LookRotation(Vector3.zero);
+                m_IsInTransition = false;
             }
             else
             {
                 m_SmoothCameraPosition = targetTransform.position;
                 m_SmoothCameraRotation = targetTransform.rotation;
                 m_LastTimeStamp = Time.time;
-                TickManager.Instance.TickSystem.OnTick += UpdateSmoothCameraPosition;
+                m_IsInTransition = true;
             }
+        }
+        
+        private void Update()
+        {
+            if (m_IsInTransition) UpdateSmoothCameraPosition();
         }
 
         private void UpdateSmoothCameraPosition()
         {
+            //if ((transform.position - m_SmoothCameraPosition).magnitude < 1f &&
+            //    Quaternion.Angle(transform.rotation, m_SmoothCameraRotation) < 1f)
+            //    m_IsInTransition = false;
+            if ((transform.position - m_SmoothCameraPosition).magnitude < 1f)
+                m_IsInTransition = false;
+
             transform.position = Vector3.Slerp(transform.position, m_SmoothCameraPosition,
                 m_SmoothCameraSpeed * Time.fixedDeltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, m_SmoothCameraRotation,
-                m_SmoothCameraSpeed * Time.fixedDeltaTime);
-            
-            if ((transform.position - m_SmoothCameraPosition).magnitude < 0.02f &&
-                (transform.rotation.eulerAngles - m_SmoothCameraRotation.eulerAngles).magnitude < 0.02f)
-                TickManager.Instance.TickSystem.OnTick -= UpdateSmoothCameraPosition;
+            //transform.rotation = Quaternion.Slerp(transform.rotation, m_SmoothCameraRotation,
+            //    m_SmoothCameraSpeed * Time.fixedDeltaTime);
         }
 
         // TODO: Implement player driving state

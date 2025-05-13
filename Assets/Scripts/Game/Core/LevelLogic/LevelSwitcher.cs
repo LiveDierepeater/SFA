@@ -52,6 +52,7 @@ namespace Game.Core.LevelLogic
         [SerializeField] protected TriggerType m_TriggerType;
         [SerializeField] protected SwitcherType m_SwitcherType;
         [SerializeField] protected AudioType m_AudioType;
+        [SerializeField] protected bool m_DisableCarCollision;
     
         [ConditionalHide("m_SwitcherType", (int)SwitcherType.Level)]
         [SerializeField] private Level m_NextLevel;
@@ -110,8 +111,9 @@ namespace Game.Core.LevelLogic
                 case SwitcherType.Level:
                     HandleVehicle();
                     HandleUI();
-                    CallLevelSwitch();
                     HandleFuelRefill();
+                    HandleCarCollision();
+                    CallLevelSwitch();
                     break;
             
                 case SwitcherType.Scene:
@@ -126,6 +128,20 @@ namespace Game.Core.LevelLogic
         protected virtual void CallLevelSwitch() => m_NextLevel.SwitchToLevel();
         protected virtual void HandleFuelRefill()
         { if (m_RefillFuelTank) GameManager.Instance.m_Player.GetComponent<PlayerController>().GetCarController().GetCar().RefillFuelTank(); }
+        
+        protected virtual void HandleCarCollision()
+        {
+            if (m_DisableCarCollision)
+            {
+                Car car = GameManager.Instance.m_Player.GetComponent<PlayerController>().GetCarController().GetCar();
+                car.gameObject.SetActive(false);
+            }
+            else
+            {
+                Car car = GameManager.Instance.m_Player.GetComponent<PlayerController>().GetCarController().GetCar();
+                car.gameObject.SetActive(true);
+            }
+        }
 
         private void HandleVehicle()
         {

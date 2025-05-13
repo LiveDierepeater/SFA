@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: -3126814414619693420}
   - component: {fileID: 8001493483672173011}
   - component: {fileID: 8510967581152644189}
+  - component: {fileID: 4235577810411732047}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -184,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60aef8285edb46cf8d45fd935332f85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SmoothCameraSpeed: 1
 --- !u!114 &8001493483672173011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +223,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CarComponents: []
+--- !u!114 &4235577810411732047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359980695859827795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a25c41499c4070a8dcb0835ab64d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StandardRotation_ForRef: {fileID: 0}
+  m_CameraSpeed: 10
+  maxYAngle: 4
+  maxXAngle: 15
