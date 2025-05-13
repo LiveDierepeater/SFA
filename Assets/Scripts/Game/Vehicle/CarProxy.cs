@@ -194,9 +194,9 @@ public class CarProxy : MonoBehaviour, IInteractable
         
         if (m_OnCarModification is not null && m_OnCarModification.Count > 0)
             if (HasAllComponentsBuildIn())
-                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarModification[UnityEngine.Random.Range(0, m_OnCarModification.Count)]);
-            else if (m_OnCarIsReady is not null)
                 NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarIsReady);
+            else if (m_OnCarIsReady is not null)
+                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarModification[UnityEngine.Random.Range(0, m_OnCarModification.Count)]);
     }
 
     private void DestroyAllProxies()

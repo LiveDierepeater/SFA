@@ -1692,6 +1692,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 09a8383b690f0d7438b8b155e6bcdb9f, type: 3}
   - {fileID: 8300000, guid: e6adb949bd0836240880297ea5ae7f70, type: 3}
   - {fileID: 8300000, guid: ed07a00edce76ad48b01f086dd86e150, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_OnCarIsReady: {fileID: 8300000, guid: 14aab22cd6028fb4191a40f85c2f613b, type: 3}
 --- !u!1 &8878817861675918645
 GameObject:
