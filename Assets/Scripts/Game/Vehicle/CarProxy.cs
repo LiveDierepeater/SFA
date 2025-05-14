@@ -215,7 +215,10 @@ public class CarProxy : MonoBehaviour, IInteractable
         
         if (m_OnCarModification is not null && m_OnCarModification.Count > 0)
             if (HasAllComponentsBuildIn())
+            {
                 NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarIsReady);
+                GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().UpdateCarComponents(GetInstalledCarComponents());
+            }
             else if (m_OnCarIsReady is not null)
                 if (Random.Range(0, 2) == 0)
                     NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnCarModification[Random.Range(0, m_OnCarModification.Count)]);

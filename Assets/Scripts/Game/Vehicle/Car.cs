@@ -16,8 +16,18 @@ namespace Game.Vehicle
     public class Car : MonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private GameObject m_CarComponentProxyPrefab;
         [SerializeField] private Transform m_CenterOfMass;
         [SerializeField] private CarStats m_CarStats;
+        [SerializeField] private Transform m_Slot_Bonnet;
+        [SerializeField] private Transform m_Slot_Chassis;
+        [SerializeField] private Transform m_Slot_Trunk;
+        [SerializeField] private Transform m_Slot_Engine;
+        [SerializeField] private Transform m_Slot_FuelTank;
+        [SerializeField] private Transform m_Slot_Wheel_LF;
+        [SerializeField] private Transform m_Slot_Wheel_RF;
+        [SerializeField] private Transform m_Slot_Wheel_LB;
+        [SerializeField] private Transform m_Slot_Wheel_RB;
         [Header("Settings")]
         [SerializeField] private float m_SpeedReduction = 10f;
         [Header("Audio")]
@@ -61,6 +71,7 @@ namespace Game.Vehicle
             UpdateRigidbodyMass();
             RefillFuelTank();
             UpdateWheelFrictionValues();
+            UpdateCarComponents(GetInstalledCarComponents());
         }
 
         private void FixedUpdate() => HandleCarSlowDown();
@@ -192,6 +203,60 @@ namespace Game.Vehicle
                 else
                     wheel.UpdateStiffnessValues(m_CarStats.GetTires().m_FF_Back, m_CarStats.GetTires().m_SF_Back);
             });
+        
+        public void UpdateCarComponents(CarComponents carComponents)
+        {
+            DestroyAllProxies();
+
+            SpawnComponentOnCar(carComponents.m_Bonnet, m_Slot_Bonnet);
+            SpawnComponentOnCar(carComponents.m_Chassis, m_Slot_Chassis);
+            SpawnComponentOnCar(carComponents.m_Trunk, m_Slot_Trunk);
+            SpawnComponentOnCar(carComponents.m_Tires, m_Slot_Wheel_LF);
+            SpawnComponentOnCar(carComponents.m_Tires, m_Slot_Wheel_RF);
+            SpawnComponentOnCar(carComponents.m_Tires, m_Slot_Wheel_LB);
+            SpawnComponentOnCar(carComponents.m_Tires, m_Slot_Wheel_RB);
+        }
+        private void DestroyAllProxies()
+        {
+            if (m_Slot_Bonnet.childCount > 0)
+                Destroy(m_Slot_Bonnet.GetChild(0).gameObject);
+        
+            if (m_Slot_Chassis.childCount > 0)
+                Destroy(m_Slot_Chassis.GetChild(0).gameObject);
+        
+            if (m_Slot_Engine.childCount > 0)
+                Destroy(m_Slot_Engine.GetChild(0).gameObject);
+        
+            if (m_Slot_FuelTank.childCount > 0)
+                Destroy(m_Slot_FuelTank.GetChild(0).gameObject);
+        
+            if (m_Slot_Trunk.childCount > 0)
+                Destroy(m_Slot_Trunk.GetChild(0).gameObject);
+        
+            if (m_Slot_Wheel_LF.childCount > 0)
+                Destroy(m_Slot_Wheel_LF.GetChild(0).gameObject);
+        
+            if (m_Slot_Wheel_RF.childCount > 0)
+                Destroy(m_Slot_Wheel_RF.GetChild(0).gameObject);
+        
+            if (m_Slot_Wheel_LB.childCount > 0)
+                Destroy(m_Slot_Wheel_LB.GetChild(0).gameObject);
+        
+            if (m_Slot_Wheel_RB.childCount > 0)
+                Destroy(m_Slot_Wheel_RB.GetChild(0).gameObject);
+        }
+        private void SpawnComponentOnCar(CarComponent component, Transform slot) =>
+            Instantiate(m_CarComponentProxyPrefab, slot.position, Quaternion.identity, slot).GetComponent<CarComponentProxy>().
+                InitializeCarComponentProxy(component, null, true, true);
+        
+        private CarComponents GetInstalledCarComponents() =>
+            new(
+                mBonnet: m_CarStats.GetBonnet(),
+                mChassis: m_CarStats.GetChassis(),
+                mEngine: m_CarStats.GetEngine(),
+                mFuelTank: m_CarStats.GetFuelTank(),
+                mTires: m_CarStats.GetTires(),
+                mTrunk: m_CarStats.GetTrunk());
 
         private void UpdateDebugValues()
         {
