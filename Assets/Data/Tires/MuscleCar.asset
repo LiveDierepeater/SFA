@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Mass: 2
   m_Mesh: {fileID: 2251765813517549177, guid: 8dab7db276a321f4a99fb2b9248bcdcc, type: 3}
-  m_Collision: {fileID: 894874477839046154, guid: 08b68fb886728344fb53567bf40660d1, type: 3}
+  m_Collision: {fileID: -1092750415566500370, guid: 08b68fb886728344fb53567bf40660d1, type: 3}
   m_Aerodynamics: 2
   m_Traction: 2
   m_FF_Front: 0.8
