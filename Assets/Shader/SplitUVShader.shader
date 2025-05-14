@@ -2,7 +2,7 @@ Shader "Custom/SplitUVShader"
 {
     Properties
     {
-        _BaseMap("Base Color (UV2)", 2D) = "white" {}
+        _MyBaseMap("Base Color (UV2)", 2D) = "white" {}
         _NormalMap("Normal Map (UV0)", 2D) = "bump" {}
         _AOMap("AO Map (UV0)", 2D) = "white" {}
         _NormalStrength("Normal Strength", Range(0, 2)) = 1.0
@@ -49,7 +49,7 @@ Shader "Custom/SplitUVShader"
                 float2 uv2 : TEXCOORD6;
             };
 
-            sampler2D _BaseMapS;
+            sampler2D _MyBaseMap;
             sampler2D _NormalMap;
             sampler2D _AOMap;
             float _NormalStrength;
@@ -82,7 +82,7 @@ Shader "Custom/SplitUVShader"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                float4 baseColor = tex2D(_BaseMapS, IN.uv2);
+                float4 baseColor = tex2D(_MyBaseMap, IN.uv2);
 
                 float4 packedNormal = tex2D(_NormalMap, IN.uv0);
                 float3 normalWS = UnpackNormalCustom(packedNormal, IN.normalWS, IN.tangentWS, IN.bitangentWS);
