@@ -5,7 +5,8 @@ public class Grandpa : NPC
 {
     [SerializeField] private AudioClip m_GameStart;
 
-#if UNITY_STANDALONE
+#if UNITY_EDITOR
+#else
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(2f);
