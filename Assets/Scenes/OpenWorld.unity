@@ -6629,6 +6629,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8510967581152644189, guid: 836a2cda2d4f8b147aac077c600bbfd4, type: 3}
+      propertyPath: m_CarComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510967581152644189, guid: 836a2cda2d4f8b147aac077c600bbfd4, type: 3}
+      propertyPath: 'm_CarComponents.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a6ca14ecb9a8de4195c967e81402902, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
