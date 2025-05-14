@@ -180,6 +180,8 @@ namespace Game.Vehicle
                 m_LowFuelWarning = false;
                 m_OutOfFuelWarning = true;
             }
+            
+            UIManager.Instance.UpdateFuelUI(m_CurrentFuelTankVolume / m_CarStats.GetFuelTank().m_Volume);
         }
     
         public Rigidbody GetRigidbody() => m_Rigidbody;
