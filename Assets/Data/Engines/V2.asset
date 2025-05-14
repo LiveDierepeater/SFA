@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: V2
   m_EditorClassIdentifier: 
   m_Mass: 1
-  m_Mesh: {fileID: 919132149155446097, guid: 07a50962bdac825439f1f4681eb492b8, type: 3}
-  m_Collision: {fileID: -2435417992900112033, guid: 07a50962bdac825439f1f4681eb492b8, type: 3}
+  m_Mesh: {fileID: 919132149155446097, guid: ff26f0b36b943b841a25fbaa3e9fcb1e, type: 3}
+  m_Collision: {fileID: -8835185471762292223, guid: ff26f0b36b943b841a25fbaa3e9fcb1e, type: 3}
   m_Speed: 1
   m_Consumption: 1
   m_Torque: 1

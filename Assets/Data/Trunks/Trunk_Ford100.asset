@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Trunk_Ford100
   m_EditorClassIdentifier: 
   m_Mass: 2
-  m_Mesh: {fileID: 919132149155446097, guid: 06de7f6bdfcdb7243a052241778d65a5, type: 3}
-  m_Collision: {fileID: 440827810258907561, guid: 06de7f6bdfcdb7243a052241778d65a5, type: 3}
+  m_Mesh: {fileID: 919132149155446097, guid: 136698bcdc6d09548ab0185cddf92615, type: 3}
+  m_Collision: {fileID: 8606165183460646267, guid: 136698bcdc6d09548ab0185cddf92615, type: 3}
   m_Aerodynamics: 0

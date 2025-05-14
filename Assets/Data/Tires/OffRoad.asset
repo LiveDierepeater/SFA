@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: OffRoad
   m_EditorClassIdentifier: 
   m_Mass: 2
-  m_Mesh: {fileID: 919132149155446097, guid: 421ad3d62411cc241abc8dd40fd3eb80, type: 3}
-  m_Collision: {fileID: -3774905544965336643, guid: afcf15551484be040ac6bfadfc63212d, type: 3}
+  m_Mesh: {fileID: 919132149155446097, guid: e0d37381fea0133468efd4c33890abd7, type: 3}
+  m_Collision: {fileID: -3831954581145897353, guid: e0d37381fea0133468efd4c33890abd7, type: 3}
   m_Aerodynamics: 1
   m_Traction: 3
   m_FF_Front: 1

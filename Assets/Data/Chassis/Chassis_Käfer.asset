@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "Chassis_K\xE4fer"
   m_EditorClassIdentifier: 
   m_Mass: 1
-  m_Mesh: {fileID: 919132149155446097, guid: 0ec3c89518b59b440bf714f1d57054df, type: 3}
-  m_Collision: {fileID: -436558069494233293, guid: 0ec3c89518b59b440bf714f1d57054df, type: 3}
+  m_Mesh: {fileID: 919132149155446097, guid: 4cb0b1df088e9d648a3c514aaf7ad4a8, type: 3}
+  m_Collision: {fileID: -8539157018133118267, guid: 4cb0b1df088e9d648a3c514aaf7ad4a8, type: 3}
   m_Aerodynamics: 2

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MidTank
   m_EditorClassIdentifier: 
   m_Mass: 2
-  m_Mesh: {fileID: 5398818388921346304, guid: bcb188304fd81f7458b68968610a630e, type: 3}
-  m_Collision: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 919132149155446097, guid: a9df49946e6031d4f83d4edbe550a85b, type: 3}
+  m_Collision: {fileID: -6578303134548658839, guid: a9df49946e6031d4f83d4edbe550a85b, type: 3}
   m_Volume: 4
