@@ -42,10 +42,7 @@ public class UIManager : MonoBehaviour
 
     private void Start() => m_Fader.SetBool(Ready, true);
 
-    public void UpdateFuelUI(float percentage)
-    {
-        m_FuelText.text = $"{percentage * 100:F0}%";
-    }
+    public void UpdateFuelUI(float percentage) => m_FuelText.text = $"{percentage * 100:F0}%";
 
     public void DisableOpenWorldUI() => DisableUI(m_OpenWorldUI);
     public void EnableOpenWorldUI() => EnableUI(m_OpenWorldUI);
