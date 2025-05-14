@@ -167,13 +167,15 @@ namespace Game.Vehicle
             
             if (m_CurrentFuelTankVolume <= m_CarStats.GetFuelTank().m_Volume * 0.2f && !m_LowFuelWarning)
             {
+                print("warning");
                 m_LowFuelWarning = true;
                 NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnFuelAlmostEmpty);
             }
             else if (m_CurrentFuelTankVolume <= 0f && !m_OutOfFuelWarning)
             {
+                print("leer");
                 m_OutOfFuelWarning = true;
-                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnFuelAlmostEmpty);
+                NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnCarModification(m_OnFuel);
             }
             else if (m_CurrentFuelTankVolume > m_CarStats.GetFuelTank().m_Volume * 0.2f && m_LowFuelWarning)
             {
