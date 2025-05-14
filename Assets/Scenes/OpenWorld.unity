@@ -1612,6 +1612,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d066a2299cadfae44873ac6e5a10b31b, type: 2}
     - target: {fileID: 3136530435469488706, guid: c2c8c574001d9bf4c8aa02971fc0f0e4, type: 3}
+      propertyPath: m_ComponentScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3136530435469488706, guid: c2c8c574001d9bf4c8aa02971fc0f0e4, type: 3}
       propertyPath: m_DistanceToGetGrabbed
       value: 15
       objectReference: {fileID: 0}
@@ -1738,6 +1742,10 @@ PrefabInstance:
       propertyPath: m_CarComponent
       value: 
       objectReference: {fileID: 11400000, guid: 46acd516ed1a04740897085bdcb5bafd, type: 2}
+    - target: {fileID: 3136530435469488706, guid: c2c8c574001d9bf4c8aa02971fc0f0e4, type: 3}
+      propertyPath: m_ComponentScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3136530435469488706, guid: c2c8c574001d9bf4c8aa02971fc0f0e4, type: 3}
       propertyPath: m_DistanceToGetGrabbed
       value: 15
@@ -3175,6 +3183,10 @@ PrefabInstance:
       propertyPath: m_CarComponent
       value: 
       objectReference: {fileID: 11400000, guid: 5b1ad046263eb7d40bd8d62008d9b0c3, type: 2}
+    - target: {fileID: 3136530435469488706, guid: c2c8c574001d9bf4c8aa02971fc0f0e4, type: 3}
+      propertyPath: m_ComponentScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3136530435469488706, guid: c2c8c574001d9bf4c8aa02971fc0f0e4, type: 3}
       propertyPath: m_DistanceToGetGrabbed
       value: 15
