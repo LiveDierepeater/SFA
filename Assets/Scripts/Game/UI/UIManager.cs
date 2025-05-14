@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Animator m_Fader;
     [SerializeField] private Transform m_OpenWorldUI;
     [SerializeField] private Transform m_LoadingScreenUI;
+    [SerializeField] private TextMeshProUGUI m_FuelText;
     
     private static readonly int FadeInput = Animator.StringToHash("FadeInput");
     private static readonly int FadeDuration = Animator.StringToHash("FadeDuration");
@@ -39,6 +41,11 @@ public class UIManager : MonoBehaviour
     }
 
     private void Start() => m_Fader.SetBool(Ready, true);
+
+    public void UpdateFuelUI(float percentage)
+    {
+        m_FuelText.text = $"{percentage * 100:F0}%";
+    }
 
     public void DisableOpenWorldUI() => DisableUI(m_OpenWorldUI);
     public void EnableOpenWorldUI() => EnableUI(m_OpenWorldUI);
