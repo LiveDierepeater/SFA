@@ -38,6 +38,12 @@ namespace Game.Player
         {
             InitializeInput();
             m_Player = GetComponent<Player>();
+            
+            #if UNITY_STANDALONE_WIN
+            m_PlayerInputType = PlayerInputType.KeyboardMouse;
+            #elif UNITY_ANDROID
+            m_PlayerInputType = PlayerInputType.Mobile;
+            #endif
         }
 
         private void InitializeInput()
