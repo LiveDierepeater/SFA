@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: V8
   m_EditorClassIdentifier: 
   m_Mass: 3
-  m_Mesh: {fileID: 919132149155446097, guid: c8de8187aa265e44daf41ebc04110e75, type: 3}
+  m_Mesh: {fileID: 6105178187448326914, guid: 87a7184a4fa34fd47b36e040a5685ddc, type: 3}
   m_Collision: {fileID: -6043757222113913283, guid: c8de8187aa265e44daf41ebc04110e75, type: 3}
   m_Speed: 4
   m_Consumption: 2

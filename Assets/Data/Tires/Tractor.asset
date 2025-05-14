@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tractor
   m_EditorClassIdentifier: 
   m_Mass: 1
-  m_Mesh: {fileID: 919132149155446097, guid: 5e46bb206690d03459a5c4f837782f46, type: 3}
+  m_Mesh: {fileID: 8539156870752009305, guid: 75dac5d642fd1574ba7933ca07cfd253, type: 3}
   m_Collision: {fileID: -782497094432470721, guid: 5e46bb206690d03459a5c4f837782f46, type: 3}
   m_Aerodynamics: 0
   m_Traction: 4

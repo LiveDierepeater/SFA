@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Chassis_Ford100
   m_EditorClassIdentifier: 
   m_Mass: 3
-  m_Mesh: {fileID: 919132149155446097, guid: 87cc417d31f40584498783ec591855de, type: 3}
+  m_Mesh: {fileID: 4838860552904881225, guid: 3edef41239f658e4aa830cfa35341da5, type: 3}
   m_Collision: {fileID: -6994375608922467463, guid: 87cc417d31f40584498783ec591855de, type: 3}
   m_Aerodynamics: 0

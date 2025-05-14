@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Game.Core;
 using UnityEngine;
 
@@ -9,14 +10,16 @@ public enum TrashState
 
 public class Trash : MonoBehaviour, ITrashComponent
 {
+    [SerializeField] private List<GameObject> m_TrashPrefabs;
+    
     private CarComponent m_CarComponent;
+    private TrashSpawner m_TrashSpawner;
     
     private TrashState m_TrashState = TrashState.Free;
     private Rigidbody m_Rigidbody;
-    private Collider m_Collider;
-    private MeshFilter m_MeshFilter;
-    private MeshRenderer m_MeshRenderer;
-    private TrashSpawner m_TrashSpawner;
+    //private MeshCollider m_MeshCollider;
+    //private MeshFilter m_MeshFilter;
+    //private MeshRenderer m_MeshRenderer;
     
     private Vector3 m_LastPosition;
 
@@ -24,10 +27,9 @@ public class Trash : MonoBehaviour, ITrashComponent
     private void AutoInitialize()
     {
         m_Rigidbody = GetComponentInChildren<Rigidbody>();
-        m_Collider = GetComponentInChildren<Collider>();
-        m_MeshFilter = GetComponentInChildren<MeshFilter>();
-        m_MeshRenderer = GetComponentInChildren<MeshRenderer>();
         m_Rigidbody.mass = 20f;
+        
+        UpdateMesh();
     }
     public void Initialize(CarComponent carComponent = null, Material material = default(Material), TrashSpawner spawner = null)
     {
@@ -36,8 +38,12 @@ public class Trash : MonoBehaviour, ITrashComponent
         
         if (m_CarComponent is null) return;
         ComponentSpawnerManager.Instance.RegisterComponent(m_CarComponent);
-        m_MeshRenderer.material = material;
-        //m_MeshFilter.sharedMesh = m_CarComponent.m_Collision;
+
+        if (transform.childCount > 0)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            var tmp = Instantiate(m_CarComponent.m_Mesh, transform.position, Quaternion.identity, transform);
+        }
     }
 
     public CarComponent GetCarComponent() => m_CarComponent;
@@ -47,12 +53,10 @@ public class Trash : MonoBehaviour, ITrashComponent
         m_TrashState = state;
         if (m_TrashState == TrashState.Grabbed)
         {
-            m_Collider.enabled = false;
             m_Rigidbody.isKinematic = true;
         }
         else
         {
-            m_Collider.enabled = true;
             m_Rigidbody.isKinematic = false;
         }
     }
@@ -98,4 +102,6 @@ public class Trash : MonoBehaviour, ITrashComponent
         m_LastPosition = transform.position;
         transform.position = Vector3.Slerp(transform.position, targetPosition, Time.deltaTime * 10f);
     }
+
+    private void UpdateMesh() => Instantiate(m_TrashPrefabs[Random.Range(0, m_TrashPrefabs.Count)], transform.position, Quaternion.identity, transform);
 }

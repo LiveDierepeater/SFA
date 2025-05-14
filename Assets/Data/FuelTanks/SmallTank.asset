@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SmallTank
   m_EditorClassIdentifier: 
   m_Mass: 1
-  m_Mesh: {fileID: 919132149155446097, guid: 54070c6320f85b34389371aab31cfe4e, type: 3}
+  m_Mesh: {fileID: 1369798131355947685, guid: bebd795dc353c9341b6bb3d775d9606b, type: 3}
   m_Collision: {fileID: -6124094833243439104, guid: 54070c6320f85b34389371aab31cfe4e, type: 3}
   m_Volume: 2

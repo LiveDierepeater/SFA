@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Trunk_PontiacFirebird
   m_EditorClassIdentifier: 
   m_Mass: 2
-  m_Mesh: {fileID: 919132149155446097, guid: 74b516487d7b1ce43821d9d297d57864, type: 3}
+  m_Mesh: {fileID: 7316183504312315235, guid: 55ce808df14cc644e8882ab694912afd, type: 3}
   m_Collision: {fileID: -8836546798492085169, guid: 74b516487d7b1ce43821d9d297d57864, type: 3}
   m_Aerodynamics: 3

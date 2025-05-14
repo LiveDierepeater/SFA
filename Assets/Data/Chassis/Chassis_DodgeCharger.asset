@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Chassis_DodgeCharger
   m_EditorClassIdentifier: 
   m_Mass: 3
-  m_Mesh: {fileID: 919132149155446097, guid: 965a6804798c4ea41b048087588fae6e, type: 3}
+  m_Mesh: {fileID: 8991775694006776889, guid: a83aa966e29b3e547a3da463969f80a6, type: 3}
   m_Collision: {fileID: -183594511634800726, guid: 965a6804798c4ea41b048087588fae6e, type: 3}
   m_Aerodynamics: 1

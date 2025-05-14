@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Trunk_DodgeCharger
   m_EditorClassIdentifier: 
   m_Mass: 3
-  m_Mesh: {fileID: 919132149155446097, guid: 1d65429b1d4b1b9468b877550ddb948b, type: 3}
+  m_Mesh: {fileID: 1090178578704046098, guid: c62168c5623b49647b25a62c59d6f418, type: 3}
   m_Collision: {fileID: 2686469464607217910, guid: 1d65429b1d4b1b9468b877550ddb948b, type: 3}
   m_Aerodynamics: 0

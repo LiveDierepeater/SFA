@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Chassis_PontiacFirebird
   m_EditorClassIdentifier: 
   m_Mass: 2
-  m_Mesh: {fileID: 919132149155446097, guid: 8ec177f9f3232e14bbfd9d1b66762530, type: 3}
+  m_Mesh: {fileID: 8186748961896024869, guid: 812d29320cd69904aa546fdf16071404, type: 3}
   m_Collision: {fileID: 8894038147268367851, guid: 8ec177f9f3232e14bbfd9d1b66762530, type: 3}
   m_Aerodynamics: 3

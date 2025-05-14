@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BigTank
   m_EditorClassIdentifier: 
   m_Mass: 3
-  m_Mesh: {fileID: 919132149155446097, guid: cbe6af2ef717e924cbe17eb974ee3f76, type: 3}
+  m_Mesh: {fileID: 5578728773921723440, guid: 325022b9812485c4b96a26f2c8e05423, type: 3}
   m_Collision: {fileID: 2856599405447024895, guid: cbe6af2ef717e924cbe17eb974ee3f76, type: 3}
   m_Volume: 7

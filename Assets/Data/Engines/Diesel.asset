@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Diesel
   m_EditorClassIdentifier: 
   m_Mass: 2
-  m_Mesh: {fileID: 919132149155446097, guid: bf24f02a6bd795649ab9d46c6160393d, type: 3}
+  m_Mesh: {fileID: 1604202575410643503, guid: 61e76d4ee9a55b84d90655035ecbac64, type: 3}
   m_Collision: {fileID: 4809610451992609401, guid: bf24f02a6bd795649ab9d46c6160393d, type: 3}
   m_Speed: 2
   m_Consumption: 1
