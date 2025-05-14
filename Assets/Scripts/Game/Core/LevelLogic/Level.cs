@@ -15,6 +15,7 @@ namespace Game.Core.LevelLogic
         [Header("Audio")]
         [SerializeField] private AudioClip m_OnLevelLoadFirstTime;
         [SerializeField] private List<AudioClip> m_OnLevelLoad;
+        [SerializeField] private bool m_UseFiftyFiftyChance = true;
 
         public delegate void LevelSwitching();
         public LevelSwitching OnLevelSwitchingAccepted;
@@ -64,12 +65,28 @@ namespace Game.Core.LevelLogic
             {
                 if (m_OnLevelLoadFirstTime is not null)
                     NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnLevelLoadFirstTime(m_OnLevelLoadFirstTime);
+                else if (m_OnLevelLoad is not null && m_OnLevelLoad.Count > 0)
+                {
+                    if (m_UseFiftyFiftyChance)
+                    {
+                        if (Random.Range(0, 2) == 0)
+                            NPCManager.GetInstance().GetNPC(NPCType.Grandpa)
+                                .ReactOnLevelLoad(m_OnLevelLoad[Random.Range(0, m_OnLevelLoad.Count)]);
+                    }
+                    else
+                        NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnLevelLoad(m_OnLevelLoad[Random.Range(0, m_OnLevelLoad.Count)]);
+                }
             }
             else
             {
                 if (m_OnLevelLoad is not null && m_OnLevelLoad.Count > 0)
                 {
-                    if (Random.Range(0, 2) == 0)
+                    if (m_UseFiftyFiftyChance)
+                    {
+                        if (Random.Range(0, 2) == 0)
+                            NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnLevelLoad(m_OnLevelLoad[Random.Range(0, m_OnLevelLoad.Count)]);
+                    }
+                    else
                         NPCManager.GetInstance().GetNPC(NPCType.Grandpa).ReactOnLevelLoad(m_OnLevelLoad[Random.Range(0, m_OnLevelLoad.Count)]);
                 }
             }
