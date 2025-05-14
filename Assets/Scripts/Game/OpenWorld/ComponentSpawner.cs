@@ -30,6 +30,8 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
     [SerializeField] private GameObject m_CarComponentProxyPrefab;
     [SerializeField] private CarComponent m_CarComponent;
     [SerializeField] private float m_ComponentScale = 3.0f;
+    [Header("Settings")]
+    [SerializeField] private float m_DistanceToGetGrabbed = 15f;
     [Header("Audio")]
     [SerializeField] private AudioClip m_OnItemCollected;
 
@@ -67,6 +69,9 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
+        // Player too far to grab the component
+        if (Vector3.Distance(GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().transform.position, transform.position) > m_DistanceToGetGrabbed) return;
+        
         GameManager.Instance.m_Player.GetComponent<Inventory>().AddCarComponentToInventory(m_CarComponent);
         HandleNPCVoiceLines();
         Destroy(gameObject);
@@ -84,5 +89,7 @@ public class ComponentSpawner : MonoBehaviour, IInteractable
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, m_SpawnedCarComponent.transform.position);
         }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, m_DistanceToGetGrabbed);
     }
 }

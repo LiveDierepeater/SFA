@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Game.Core;
 using UnityEngine;
 
@@ -9,8 +8,6 @@ namespace Game.Player
     {
         [SerializeField] private Transform m_StandardRotation_ForRef;
         [SerializeField] private float m_CameraSpeed = 2f;
-        [Header("Clamping")]
-        [SerializeField] private float m_MaxAngle = 30f;
         
         private Transform m_TargetTransform;
 

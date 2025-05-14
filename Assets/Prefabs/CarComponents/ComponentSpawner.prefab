@@ -71,4 +71,5 @@ MonoBehaviour:
   m_CarComponentProxyPrefab: {fileID: 5398818388921346304, guid: 79017b38940882d47be216c01d801483, type: 3}
   m_CarComponent: {fileID: 0}
   m_ComponentScale: 3
+  m_DistanceToGetGrabbed: 15
   m_OnItemCollected: {fileID: 8300000, guid: 4e88f07eb6f81884da4f73ca19ce5f86, type: 3}
