@@ -160,34 +160,54 @@ public class CarProxy : MonoBehaviour, IInteractable
         {
             case Bonnet:
                 carComponentProxy.transform.SetParent(m_Slot_Bonnet.transform);
+                carComponentProxy.transform.localPosition = Vector3.zero;
+                carComponentProxy.transform.localRotation = Quaternion.identity;
                 break;
             case Chassis:
                 carComponentProxy.transform.SetParent(m_Slot_Chassis.transform);
+                carComponentProxy.transform.localPosition = Vector3.zero;
+                carComponentProxy.transform.localRotation = Quaternion.identity;
                 break;
             case Engine:
                 carComponentProxy.transform.SetParent(m_Slot_Engine.transform);
+                carComponentProxy.transform.localPosition = Vector3.zero;
+                carComponentProxy.transform.localRotation = Quaternion.identity;
                 break;
             case FuelTank:
                 carComponentProxy.transform.SetParent(m_Slot_FuelTank.transform);
+                carComponentProxy.transform.localPosition = Vector3.zero;
+                carComponentProxy.transform.localRotation = Quaternion.identity;
                 break;
             case Tires:
                 carComponentProxy.transform.SetParent(m_Slot_Wheel_LF.transform);
+                carComponentProxy.transform.localPosition = Vector3.zero;
+                carComponentProxy.transform.localRotation = Quaternion.identity;
                 
                 var tmp = Instantiate(carComponentProxy, m_Slot_Wheel_RF.transform, false);
                 tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(
                     GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
                     this, false, true, ProxyState.Installed, tmp.transform.position);
+                tmp.transform.localPosition = Vector3.zero;
+                tmp.transform.localRotation = Quaternion.identity;
+                
                 tmp = Instantiate(carComponentProxy, m_Slot_Wheel_LB.transform, false);
                 tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(
                     GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
                     this, false, true, ProxyState.Installed, tmp.transform.position);
+                tmp.transform.localPosition = Vector3.zero;
+                tmp.transform.localRotation = Quaternion.identity;
+
                 tmp = Instantiate(carComponentProxy, m_Slot_Wheel_RB.transform, false);
                 tmp.GetComponent<CarComponentProxy>().InitializeCarComponentProxy(
                     GameManager.Instance.m_Player.GetPlayerController().GetCarController().GetCar().GetCarStats().GetTires(),
                     this, false, true, ProxyState.Installed, tmp.transform.position);
+                tmp.transform.localPosition = Vector3.zero;
+                tmp.transform.localRotation = Quaternion.identity;
                 break;
             case Trunk:
                 carComponentProxy.transform.SetParent(m_Slot_Trunk.transform);
+                carComponentProxy.transform.localPosition = Vector3.zero;
+                carComponentProxy.transform.localRotation = Quaternion.identity;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
