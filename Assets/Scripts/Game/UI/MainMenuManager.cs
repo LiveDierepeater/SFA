@@ -15,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
     private void Awake() => fadeCoroutine = FadeOut();
     
     public void StartGame() => TransferToOpenWorld();
+    public void LoadOptions() => SceneManager.LoadScene(1);
     public void QuitGame() => Application.Quit();
 
     private void TransferToOpenWorld() => StartCoroutine(fadeCoroutine);
