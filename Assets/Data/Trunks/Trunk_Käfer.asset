@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "Trunk_K\xE4fer"
   m_EditorClassIdentifier: 
   m_Mass: 1
-  m_Mesh: {fileID: 5700869970732420388, guid: cb7365373d8b5a940b7fcb27cf9907b8, type: 3}
-  m_Collision: {fileID: -326852998473574383, guid: 22e67f11ad1ea9b45bd1b1bd2b4e0983, type: 3}
+  m_Mesh: {fileID: 4556964378429532937, guid: 5f4618104f6545a4a80cfc90095ef52a, type: 3}
+  m_Collision: {fileID: -3270855711765136546, guid: 2f7a0d822ae7ee64491f50b4541f68d3, type: 3}
   m_Aerodynamics: 2

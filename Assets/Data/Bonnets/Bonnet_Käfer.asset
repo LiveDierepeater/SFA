@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "Bonnet_K\xE4fer"
   m_EditorClassIdentifier: 
   m_Mass: 1
-  m_Mesh: {fileID: 919132149155446097, guid: 167c9873a7f88d943a4fa6116c061784, type: 3}
-  m_Collision: {fileID: 8568809038713869067, guid: 167c9873a7f88d943a4fa6116c061784, type: 3}
+  m_Mesh: {fileID: 2228453324864334927, guid: 2754850770a052f43972f6ec4eb347b9, type: 3}
+  m_Collision: {fileID: 6390566703879325276, guid: 4250a2be0450fea4481c2da756b7e395, type: 3}
   m_Aerodynamics: 2
