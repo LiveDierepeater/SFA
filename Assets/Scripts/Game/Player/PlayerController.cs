@@ -41,6 +41,7 @@ namespace Game.Player
             
             #if UNITY_STANDALONE_WIN
             m_PlayerInputType = PlayerInputType.KeyboardMouse;
+            UIManager.Instance.DisableMobileControlsUI();
             #elif UNITY_ANDROID
             m_PlayerInputType = PlayerInputType.Mobile;
             #endif

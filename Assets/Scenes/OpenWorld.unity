@@ -2056,6 +2056,7 @@ MonoBehaviour:
   m_OpenWorldUI: {fileID: 1703160787}
   m_LoadingScreenUI: {fileID: 1036552903}
   m_FuelText: {fileID: 1884626176}
+  m_MobileControlsUI: {fileID: 1565876793}
 --- !u!1001 &547337894
 PrefabInstance:
   m_ObjectHideFlags: 0

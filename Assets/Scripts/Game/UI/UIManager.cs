@@ -9,6 +9,7 @@ public enum FadeType
     FadeOut
 }
 
+[DefaultExecutionOrder(-2)]
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
@@ -18,6 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform m_OpenWorldUI;
     [SerializeField] private Transform m_LoadingScreenUI;
     [SerializeField] private TextMeshProUGUI m_FuelText;
+    [SerializeField] private Transform m_MobileControlsUI;
     
     private static readonly int FadeInput = Animator.StringToHash("FadeInput");
     private static readonly int FadeDuration = Animator.StringToHash("FadeDuration");
@@ -43,6 +45,12 @@ public class UIManager : MonoBehaviour
     private void Start() => m_Fader.SetBool(Ready, true);
 
     public void UpdateFuelUI(float percentage) => m_FuelText.text = $"{percentage * 100:F0}%";
+    
+    public void DisableMobileControlsUI()
+    {
+        if (m_MobileControlsUI == null) return;
+        m_MobileControlsUI.gameObject.SetActive(false);
+    }
 
     public void DisableOpenWorldUI() => DisableUI(m_OpenWorldUI);
     public void EnableOpenWorldUI() => EnableUI(m_OpenWorldUI);
